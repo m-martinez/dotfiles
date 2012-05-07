@@ -1,12 +1,18 @@
-[submodule "vim/bundle/nerdtree"]
-    path = .vim/bundle/nerdtree
-    url = git://github.com/scrooloose/nerdtree.git
-[submodule ".vim/bundle/vim-surround"]
-    path = .vim/bundle/vim-surround
-    url = https://github.com/tpope/vim-surround.git
 [submodule "vim-pathogen"]
     path = vim-pathogen
     url = https://github.com/tpope/vim-pathogen/
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/vim-surround"]
+	path = .vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
 [submodule ".vim/bundle/nerdcommenter"]
-    path = .vim/bundle/nerdcommenter
-    url = https://github.com/scrooloose/nerdcommenter
+	path = .vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter
+[submodule "vim/bundle/Color-Sample-Pack"]
+	path = vim/bundle/Color-Sample-Pack
+	url = https://github.com/vim-scripts/Color-Sampler-Pack.git
+[submodule ".vim/bundle/vim-pathogen"]
+	path = .vim/bundle/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen.git

@@ -16,7 +16,11 @@ export LC_MESSAGES="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
 
+# Shell prompt
 export PS1='\[\e[0;32m\][\u@\h \W]\$\[\e[0m\] '
+
+# The omnipotent path
+export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/bin:/usr/X11R6/bin
 
 alias ssh="ssh -A"
 
@@ -37,13 +41,9 @@ fi
 # OS-SPECIFIC
 ################################################################################
 
-# OSX
-if [`uname` = "Darwin"]; then
+if [[ $OSTYPE == darwin* ]]; then
     # Disable .DS_Store for tar files
     export COPYFILE_DISABLE=true
-   
-    # ALTER PATH so that /usr/local/bin appears first for brew
-    export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin"
 fi
 
 
