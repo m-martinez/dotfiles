@@ -13,6 +13,7 @@ EXCLUDE=(
     ..
     .
     .git
+    .gitignore
     .svn
     .hg
     .DS_Store
