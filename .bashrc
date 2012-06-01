@@ -1,8 +1,8 @@
-# ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
-# exists.
-# see /usr/share/doc/bash/examples/startup-files for examples.
-# the files are located in the bash-doc package.
+
+if [ -f /etc/bashrc ]; then
+    source /etc/bashrc
+fi
+
 
 ################################################################################
 # GENERAL
@@ -23,14 +23,6 @@ export PS1='\[\e[0;32m\][\u@\h \W]\$\[\e[0m\] '
 export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/bin:/usr/X11R6/bin
 
 alias ssh="ssh -A"
-
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then

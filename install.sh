@@ -116,5 +116,5 @@ EOF
 fi
 
 echo "==> Setting environment variables"
-source ~/.profile
+source ~/.bashrc
 
