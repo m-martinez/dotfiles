@@ -23,6 +23,7 @@ export PS1='\[\e[0;32m\][\u@\h \W]\$\[\e[0m\] '
 export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/bin:/usr/X11R6/bin
 
 alias ssh="ssh -A"
+alias ll="ls -l"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
