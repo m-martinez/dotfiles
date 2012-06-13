@@ -40,7 +40,7 @@ autocmd FileType html,xml setlocal shiftwidth=2 tabstop=2
 
 " Enfore 80 characters (still want to see 80th character)
 set winwidth=80
-set colorcolumn=80
+"set colorcolumn=80
 
 autocmd BufNewFile,BufRead *.zcml set filetype=xml
 autocmd BufNewFile,BufRead *.pt set filetype=xml
