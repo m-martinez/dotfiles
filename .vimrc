@@ -16,6 +16,9 @@ call pathogen#infect()
 
 let NERDTreeIgnore=['\.o$', '\~$', '\.egg-info$', '\.pyc$']
 
+" show hidden files by default
+let NERDTreeShowHidden=1
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
