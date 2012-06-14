@@ -115,6 +115,6 @@ EOF
     echo "Created default.cfg at: $BUILDOUT_DIR"
 fi
 
-echo "==> Setting environment variables"
-source ~/.bashrc
+echo "==> Loading zshell configuration"
+source ~/.zshrc
 
