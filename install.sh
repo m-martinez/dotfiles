@@ -14,6 +14,7 @@ EXCLUDE=(
     .
     .git
     .gitignore
+    .gitmodules
     .svn
     .hg
     .DS_Store
