@@ -1,115 +1,183 @@
-# This is a modified version of Phil's prompt
-# I removed the battery monitor, color and simplified
-# the title bar to just the host
-#
-# http://aperiodic.net/phil/prompt/
+###############################################################################
+# ZShell Prompt Customizations
+###############################################################################
 
-function precmd {
-    # make sure that all new commands are available
-    rehash
+autoload -U colors && colors
+# set some colors
+for COLOR in RED GREEN YELLOW WHITE BLACK CYAN BLUE PURPLE; do
+    eval PR_$COLOR='%{$fg[${(L)COLOR}]%}'
+    eval PR_BRIGHT_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
+done
+PR_RESET="%{${reset_color}%}";
 
-    local TERMWIDTH
-    (( TERMWIDTH = ${COLUMNS} - 1 ))
+setopt prompt_subst
 
-    # Truncate the path if it's too long.
-    PR_FILLBAR=""
-    PR_PWDLEN=""
+autoload -Uz vcs_info
 
-    local promptsize=${#${(%):---%D{%a\,%b %d}-----}}
-    local pwdsize=${#${(%):-%d}}
+zstyle ':vcs_info:*' enable git cvs svn
+# set formats
+# %b - branchname
+# %u - unstagedstr (see below)
+# %c - stangedstr (see below)
+# %a - action (e.g. rebase-i)
+# %R - repository path
+# %S - path in the repository
+## check-for-changes can be really slow.
+## you should disable it, if you work with large repositories
+zstyle ':vcs_info:*:prompt:*' check-for-changes true            # slower, but lets us show changes to working/index
+zstyle ':vcs_info:*:prompt:*' unstagedstr "${PR_BRIGHT_YELLOW}*${PR_RESET}"             # unstaged changes string: red *
+zstyle ':vcs_info:*:prompt:*' stagedstr "${PR_BRIGHT_YELLOW}+${PR_RESET}"            # staged changes string: yellow +
+zstyle ':vcs_info:*:prompt:*' formats  " ${PR_GREEN}%s${PR_RESET}:${PR_BRIGHT_RED}(%b${PR_RESET}%c%u${PR_BRIGHT_RED})${PR_RESET}"              "%a"
+zstyle ':vcs_info:*:prompt:*' actionformats  " ${PR_GREEN}%s${PR_RESET}:${PR_BRIGHT_RED}(%b|%a)${PR_RESET}"              "%a"
+zstyle ':vcs_info:*:prompt:*' nvcsformats   ""                             "%~"
+zstyle ':vcs_info:*:prompt:*' branchformat  "%b:%r"              ""
 
-    if [[ "$promptsize + $pwdsize" -gt $TERMWIDTH ]]; then
-            ((PR_PWDLEN=$TERMWIDTH - $promptsize))
+BLUE_DIAMOND="%B%F{blue}◆%f%b"
+YELLOW_DIAMOND="%B%F{yellow}◆%f%b"
+GREEN_DIAMOND="%B%F{green}◆%f%b"
+RED_DIAMOND="%B%F{red}◆%f%b"
+RED_RARROW="%B%F{red}▶%f%b"
+RED_LARROW="%B%F{red}◀%f%b"
+RED_STAR="%B%F{red}✱%b%f"
+
+case $TERM in
+    *xterm*|rxvt|(dt|k|E)term)
+        preexec () {
+            if [[ $(basename ${1[(w)1]}) == "ssh" ]]; then
+                SHN=${1[(w)-1]}
+                SHN_ARRAY=( ${(s,.,)SHN})
+                print -Pn "\e]2;$SHN:%~\a"
+            else
+                print -Pn "\e]2;%n@%m:%~\a"
+            fi
+        }
+    ;;
+    screen)
+        preexec () {
+            if [[ $(basename ${1[(w)1]}) == "ssh" ]]; then
+                SHN=${1[(w)-1]}
+                SHN=${SHN#*@}
+                SHN_ARRAY=( ${(s,.,)SHN})
+                case ${#SHN_ARRAY} in
+                    2)
+                        print -Pn "\033k$SHN\033\\"
+                    ;;
+                    4)
+                        print -Pn "\033k$SHN_ARRAY[1].$SHN_ARRAY[2]\033\\"
+                    ;;
+                    5)
+                        #print -Pn "\033k$SHN_ARRAY[1].$SHN_ARRAY[2].$SHN_ARRAY[3]\033\\"
+                        print -Pn "\033k$SHN_ARRAY[1].$SHN_ARRAY[3]\033\\"
+                    ;;
+                    *)
+                        print -Pn "\033k$SHN_ARRAY[1]\033\\"
+                    ;;
+                esac
+            fi
+        }
+        #set up precmd to draw the screen title
+        function set_screen_title {
+            print -Pn "\033k%m\033\\"
+        }
+        precmd_functions=( set_screen_title )
+    ;;
+}
+
+if [[ -n $SSH_CONNECTION ]]; then
+    SSH_IP=$(echo $SSH_CLIENT | awk '{print $1}')
+    HOST_OUTPUT=$(host $SSH_IP)
+    if [[ $? -eq 0 ]]; then
+        SSH_HOST=$(echo $HOST_OUTPUT | awk '{print $NF}' | sed 's/.$//')
     else
-        PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize)))..${PR_HBAR}.)}"
+        SSH_HOST=$SSH_IP
     fi
+    SSH_PROMPT="${RED_STAR}%F{yellow}SSH from: %f%B%F{green}$SSH_HOST%f%b${RED_STAR}"
+    #SSH_PROMPT="${YELLOW_DIAMOND}${PR_BRIGHT_RED}SSH${PR_RESET}${YELLOW_DIAMOND}"
+    #SSH_VAR="${YELLOW_DIAMOND}${PR_BRIGHT_RED}SSH${PR_RESET}${YELLOW_DIAMOND}"
 
-    # Only show user in the prompt if it isn't yourself
-    # Make sure and set the $ME var in .zshrc
-    PR_IMPOSTER=""
-    [ "$ME" != "" ] && [ $(whoami) != "$ME" ] && PR_IMPOSTER="(%n%)"
+fi
 
-    PR_PROJECT=""
-    local THIRD_DIR="$(pwd | cut -f 4,5 -d /)"
-    if [ "$THIRD_DIR" = "sixfeetup/projects" ]; then
-        PR_PROJECT="$(pwd | cut -f 6 -d /)"
-        [ ! "$PR_PROJECT" = "" ] && PR_PROJECT="($PR_PROJECT)"
+if [[ $(whoami) = root ]]; then
+    PROMPT_LINE="%B%F{red}%n@%M%f%b"
+else
+    PROMPT_LINE="%F{green}%n%f@%B%F{$HASH_MOD}%m%b%f"
+fi
+
+precmd(){
+
+    local exit_status=$?
+
+    vcs_info 'prompt'
+
+    # Battery Stuff
+    if which ibam &> /dev/null; then
+        IBAMSTAT="$(ibam)"
+        if [[ ${IBAMSTAT[(f)(1)][(w)1]} =  "Battery" ]]; then
+            BATTSTATE="$(ibam --percentbattery)"
+            BATTPRCNT="${BATTSTATE[(f)1][(w)-2]}"
+            BATTTIME="${BATTSTATE[(f)2][(w)-1]}"
+            PR_BATTERY="Bat: ${BATTPRCNT}%% (${BATTTIME})"
+            if [[ "${BATTPRCNT}" -lt 15 ]]; then
+                PR_BATTERY=" ${BLUE_DIAMOND} ${PR_BRIGHT_RED}${PR_BATTERY}"
+            elif [[ "${BATTPRCNT}" -lt 50 ]]; then
+                PR_BATTERY=" ${BLUE_DIAMOND} ${PR_BRIGHT_YELLOW}${PR_BATTERY}"
+            elif [[ "${BATTPRCNT}" -lt 100 ]]; then
+                PR_BATTERY=" ${BLUE_DIAMOND} ${PR_BRIGHT_CYAN}${PR_BATTERY}${PR_RESET}"
+            else
+                PR_BATTERY=""
+            fi
+        else
+            PR_BATTERY=""
+        fi
     fi
-    local OTHER_THIRD_DIR="$(pwd | cut -f 5,6 -d /)"
-    if [ "$OTHER_THIRD_DIR" = "sixfeetup/projects" ]; then
-        PR_PROJECT="$(pwd | cut -f 7 -d /)"
-        [ ! "$PR_PROJECT" = "" ] && PR_PROJECT="($PR_PROJECT)"
-    fi
-}
+    ###End of Battery Stuff######
 
-setopt extended_glob
-preexec () {
-    if [[ "$TERM" == "screen" ]]; then
-        local CMD=${1[(wr)^(*=*|sudo|-*)]}
-        echo -n "\ek$CMD\e\\"
-    fi
-}
-
-setprompt () {
-    # Need this so the prompt will work.
-    setopt prompt_subst
-
-    PR_NO_COLOUR="%{$terminfo[sgr0]%}"
-
-    # See if we can use extended characters to look nicer.
-    typeset -A altchar
-    set -A altchar ${(s..)terminfo[acsc]}
-    PR_SET_CHARSET="%{$terminfo[enacs]%}"
-    PR_SHIFT_IN="%{$terminfo[smacs]%}"
-    PR_SHIFT_OUT="%{$terminfo[rmacs]%}"
-    PR_HBAR=${altchar[q]:--}
-    PR_ULCORNER=${altchar[l]:--}
-    PR_LLCORNER=${altchar[m]:--}
-    PR_LRCORNER=${altchar[j]:--}
-    PR_URCORNER=${altchar[k]:--}
-
-    # Decide if we need to set titlebar text.
-    case $TERM in
-       xterm*)
-           PR_TITLEBAR=$'%{\e]0;%m $PR_IMPOSTER $PR_PROJECT\a%}'
-           ;;
-       screen)
-           PR_TITLEBAR=$'%{\e_screen \005 (\005t) | %m $PR_IMPOSTER\e\\%}'
-           ;;
-       *)
-           PR_TITLEBAR=''
-           ;;
-    esac
-
-    # Decide whether to set a screen title
-    if [[ "$TERM" == "screen" ]]; then
-        PR_STITLE=$'%{\ekzsh\e\\%}'
+    # now lets change the color of the path if its not writable
+    if [[ -w $PWD ]]; then
+        PR_PWDCOLOR="%F{yellow}"
     else
-        PR_STITLE=''
+        PR_PWDCOLOR="${PR_BRIGHT_RED}"
     fi
 
-    # Finally, the prompt (removed the color - claytron)
-    PROMPT='$PR_IMPOSTER $(git_super_status)
-$PR_SET_CHARSET$PR_STITLE${(e)PR_TITLEBAR}\
-$PR_SHIFT_IN$PR_ULCORNER$PR_HBAR$PR_SHIFT_OUT\
-%D{%a,%b %d}\
-$PR_SHIFT_IN$PR_HBAR$PR_HBAR${(e)PR_FILLBAR}$PR_HBAR$PR_SHIFT_OUT\
-%$PR_PWDLEN<...<%d%<<\
-$PR_SHIFT_IN$PR_HBAR$PR_URCORNER$PR_SHIFT_OUT\
+    # exit code, print it if its not 0
+    if [[ $exit_status -ne 0 ]]; then
+        EXIT_STATUS=" %B%F{blue}◆%f%b %B%F{$HASH_MOD}Exit Code:%b%f %B%F{yellow}${exit_status}%b%f"
+    else
+        EXIT_STATUS=""
+    fi
 
-$PR_SHIFT_IN$PR_LLCORNER$PR_HBAR$PR_SHIFT_OUT\
-%m%#\
-$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT '
 
-    RPROMPT=' $PR_SHIFT_IN$PR_HBAR$PR_HBAR$PR_SHIFT_OUT\
-%T\
-$PR_SHIFT_IN$PR_HBAR$PR_LRCORNER$PR_SHIFT_OUT'
+#PROMPT LINE
+#${PR_BRIGHT_YELLOW}%D{%R.%S %a %b %d %Y}${PR_RESET}\
+LINE1_PROMPT="\
+%B%F{black}▶%f%b%F{red}▶%B%F{red}▶%f%b \
+%B%F{$HASH_MOD}%D{%R.%S %a %b %d %Y}%b%f\
+${EXIT_STATUS}\
+%(1j. %B%F{green}◆%f%b %B%F{yellow}Jobs: %j%f%b.)\
+${PR_BATTERY}\
+ %B%F{red}◀%f%b%F{red}◀%B%F{black}◀%f%b"
+###################
 
-    PS2='$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT\
-$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT(\
-%_)$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT\
-$PR_SHIFT_IN$PR_HBAR$PR_SHIFT_OUT '
+local TERMWIDTH
+(( TERMWIDTH = ${COLUMNS} - 2 ))
+LINE1=${(e%)LINE1_PROMPT} SSH_P=${(e%)SSH_PROMPT}
+#$LINE1
+LINE1_LENGTH=${#${LINE1//\[[^m]##m/}}
+SSH_P_LENGTH=${#${SSH_P//\[[^m]##m/}}
+FILL_SPACES=${(l:TERMWIDTH - (LINE1_LENGTH + SSH_P_LENGTH):: :)}
+
+print -- "$LINE1 $FILL_SPACES $SSH_P"
 }
 
-setprompt
+function zle-line-init zle-keymap-select {
+    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+    RPS2=$RPS1
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+PROMPT='${PROMPT_LINE}%B%F{green}:%f%b${PR_PWDCOLOR}%~${PR_RESET}${vcs_info_msg_0_}%(!.%B%F{red}%#%f%b.%B%F{green}➤%f%b) '
+
+
 
