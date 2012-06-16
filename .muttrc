@@ -1,0 +1,9 @@
+set folder="$HOME/mail"
+
+set imap_user = "mam002@ucsd.edu"
+#set imap_pass = `getpassword email_id`
+
+set smtp_url = "smtp://smtp.ucsd.edu"
+#set smtp_pass = "password"
+set from = "mam002@ucsd.edu"
+set realname = "Marco Martinez"
