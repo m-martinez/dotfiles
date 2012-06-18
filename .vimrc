@@ -14,10 +14,10 @@ call pathogen#infect()
 " => NERDTree preferences
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let NERDTreeIgnore=['\.o$', '\~$', '\.egg-info$', '\.pyc$']
+let NERDTreeIgnore=['\.o$', '\~$', '\.egg-info$', '\.pyc$', 'develop-eggs$', 'bin$', 'parts$']
 
-" show hidden files by default
-let NERDTreeShowHidden=1
+" do not show hidden files by default
+let NERDTreeShowHidden=0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
