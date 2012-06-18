@@ -31,7 +31,7 @@ fi
 # Aliases
 #
 
-#alias ssh="ssh -A"
+alias ssh="ssh -A"
 alias ll="ls -l"
 
 #
