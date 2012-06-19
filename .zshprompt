@@ -151,7 +151,7 @@ precmd(){
 #${PR_BRIGHT_YELLOW}%D{%R.%S %a %b %d %Y}${PR_RESET}\
 LINE1_PROMPT="\
 %B%F{black}▶%f%b%F{red}▶%B%F{red}▶%f%b \
-%B%F{$HASH_MOD}%D{%Y-%m-%d %R.%S}%b%f\
+%B%F{$HASH_MOD}%D{%D %R}%b%f\
 ${EXIT_STATUS}\
 %(1j. %B%F{green}◆%f%b %B%F{yellow}Jobs: %j%f%b.)\
 ${PR_BATTERY}\
