@@ -53,6 +53,12 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 let mapleader = ","
 
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
 " Set 7 lines to the curors - when moving vertical..
 set so=7
 
