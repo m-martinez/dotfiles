@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/taglist.vim"]
 	path = .vim/bundle/taglist.vim
 	url = git://github.com/vim-scripts/taglist.vim.git
+[submodule ".vim/bundle/bufexplorer"]
+	path = .vim/bundle/bufexplorer
+	url = git://github.com/vim-scripts/bufexplorer.zip.git
