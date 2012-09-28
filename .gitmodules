@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/VST"]
 	path = .vim/bundle/VST
 	url = git://github.com/vim-scripts/VST.git
+[submodule ".vim/bundle/vim-scala"]
+	path = .vim/bundle/vim-scala
+	url = git://github.com/derekwyatt/vim-scala.git
