@@ -41,6 +41,8 @@ alias ll="ls -l"
 if [[ $OSTYPE == darwin* ]]; then
     # Disable .DS_Store for tar files
     export COPYFILE_DISABLE=true
+    export ANDROID_PATH=$HOME/Tools/android
+    export PATH=$ANDROID_PATH/tools:$ANDROID_PATH/platform-tools:$PATH
 fi
 
 
