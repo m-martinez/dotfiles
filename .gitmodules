@@ -19,3 +19,6 @@
 [submodule ".vim/bundle/bufexplorer"]
 	path = .vim/bundle/bufexplorer
 	url = git://github.com/vim-scripts/bufexplorer.zip.git
+[submodule ".vim/bundle/VST"]
+	path = .vim/bundle/VST
+	url = git://github.com/vim-scripts/VST.git
