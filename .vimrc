@@ -50,7 +50,7 @@ set shiftwidth=4
 autocmd FileType html,xml setlocal shiftwidth=2 tabstop=2
 
 " Enfore 80 characters (still want to see 80th character)
-set winwidth=80
+"set winwidth=80
 "set colorcolumn=80
 
 autocmd BufNewFile,BufRead *.zcml set filetype=xml
@@ -97,10 +97,9 @@ set tm=500
 
 
 " Wrapping
-set wrap
-set linebreak
+set nowrap
 set nolist " list disables line break
-set textwidth=0
+set textwidth=500
 set wrapmargin=0
 
 
@@ -111,7 +110,7 @@ set wrapmargin=0
 syntax enable "Enable syntax hl
 
 set gfn=Menlo:h14
-set shell=/bin/bash
+set shell=/bin/zsh
 
 colorscheme lucius
 
