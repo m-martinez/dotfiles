@@ -25,3 +25,6 @@
 [submodule ".vim/bundle/vim-scala"]
 	path = .vim/bundle/vim-scala
 	url = git://github.com/derekwyatt/vim-scala.git
+[submodule ".mutt/themes/mutt-colors-solarized"]
+	path = .mutt/themes/mutt-colors-solarized
+	url = git://github.com/altercation/mutt-colors-solarized.git
