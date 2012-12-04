@@ -28,3 +28,6 @@
 [submodule ".mutt/themes/mutt-colors-solarized"]
 	path = .mutt/themes/mutt-colors-solarized
 	url = git://github.com/altercation/mutt-colors-solarized.git
+[submodule ".vim/bundle/mako.vim"]
+	path = .vim/bundle/mako.vim
+	url = git@github.com:vim-scripts/mako.vim.git

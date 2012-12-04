@@ -54,7 +54,8 @@ autocmd FileType html,xml setlocal shiftwidth=2 tabstop=2
 "set colorcolumn=80
 
 autocmd BufNewFile,BufRead *.zcml set filetype=xml
-autocmd BufNewFile,BufRead *.pt set filetype=xml
+autocmd BufNewFile,BufRead *.pt set filetype=html
+autocmd BufNewFile,BufRead *.mako set filetype=html
 
 " Strip  whitespace
 autocmd BufWritePre * :%s/\s\+$//e
