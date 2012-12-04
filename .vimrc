@@ -47,7 +47,7 @@ set tabstop=4
 set shiftwidth=4
 
 " Exception for indeing is xml/html, since it can get unwieldly
-autocmd FileType html,xml setlocal shiftwidth=2 tabstop=2
+autocmd FileType mako,html,xml setlocal shiftwidth=2 tabstop=2
 
 " Enfore 80 characters (still want to see 80th character)
 "set winwidth=80
@@ -55,7 +55,7 @@ autocmd FileType html,xml setlocal shiftwidth=2 tabstop=2
 
 autocmd BufNewFile,BufRead *.zcml set filetype=xml
 autocmd BufNewFile,BufRead *.pt set filetype=html
-autocmd BufNewFile,BufRead *.mako set filetype=html
+autocmd BufNewFile,BufRead *.mako set filetype=mako
 
 " Strip  whitespace
 autocmd BufWritePre * :%s/\s\+$//e
