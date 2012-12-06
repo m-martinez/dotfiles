@@ -49,10 +49,6 @@ set shiftwidth=4
 " Exception for indeing is xml/html, since it can get unwieldly
 autocmd FileType mako,html,xml setlocal shiftwidth=2 tabstop=2
 
-" Enfore 80 characters (still want to see 80th character)
-"set winwidth=80
-"set colorcolumn=80
-
 autocmd BufNewFile,BufRead *.zcml set filetype=xml
 autocmd BufNewFile,BufRead *.pt set filetype=html
 autocmd BufNewFile,BufRead *.mako set filetype=mako
@@ -108,12 +104,12 @@ set wrapmargin=0
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-syntax enable "Enable syntax hl
+syntax enable
 
-set gfn=Menlo:h14
 set shell=/bin/zsh
 
-colorscheme lucius
+set background=dark
+colorscheme solarized
 
 set encoding=utf8
 try
@@ -127,7 +123,7 @@ set ffs=unix,dos,mac "Default file types
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Turn backup off, since most stuff is in SVN, git anyway...
+" turn off file backup, that's what git is for
 set nobackup
 set nowb
 set noswapfile
