@@ -32,7 +32,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -49,7 +49,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/b
 
 # OSX specific
 if [[ $OSTYPE == darwin* ]]; then
-    # Disable .DS_Store for tar files
+    # disable .DS_Store for tar files
     export COPYFILE_DISABLE=true
 fi
 
