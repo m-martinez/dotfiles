@@ -41,15 +41,17 @@ source $ZSH/oh-my-zsh.sh
 #
 
 # enable terminal colors
-export CLICOLOR=1
+CLICOLOR=1
+
+DISABLE_AUTO_TITLE=true
 
 # customize the path
 # TODO: add android paths
-export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/bin:/usr/X11R6/bin
+PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/bin:/usr/X11R6/bin
 
 # OSX specific
 if [[ $OSTYPE == darwin* ]]; then
     # disable .DS_Store for tar files
-    export COPYFILE_DISABLE=true
+    COPYFILE_DISABLE=true
 fi
 
