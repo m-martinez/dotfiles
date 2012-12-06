@@ -108,6 +108,7 @@ syntax enable
 
 set shell=/bin/zsh
 
+let g:solarized_termtrans = 1
 set background=dark
 colorscheme solarized
 
