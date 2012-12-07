@@ -39,6 +39,8 @@ source $ZSH/oh-my-zsh.sh
 # turn off special handling of ._* files in tar, etc.
 COPYFILE_DISABLE=1;
 
-# add local bin to the path
-PATH=$PATH:$HOME/bin
+# add local bin to the path if not already there
+if [[ "$PATH" != *"$HOME/bin"* ]]; then
+    PATH=$PATH:$HOME/bin
+fi
 
