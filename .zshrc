@@ -44,3 +44,6 @@ if [[ "$PATH" != *"$HOME/bin"* ]]; then
     PATH=$PATH:$HOME/bin
 fi
 
+# turn off annoying history verification, just run the damn command
+setopt no_hist_verify
+
