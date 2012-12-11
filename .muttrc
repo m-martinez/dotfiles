@@ -1,7 +1,0 @@
-set imap_user = "mam002@ucsd.edu"
-set from = "mam002@ucsd.edu"
-set realname = "Marco"
-set folder=imaps://mam002@mail.ucsd.edu:993/
-set spoolfile=+INBOX
-
-source $HOME/.mutt/themes/mutt-colors-solarized/mutt-colors-solarized-light-256.muttrc
