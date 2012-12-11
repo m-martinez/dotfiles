@@ -44,6 +44,20 @@ if [[ "$PATH" != *"$HOME/bin"* ]]; then
     PATH=$PATH:$HOME/bin
 fi
 
+#allow tab completion in the middle of a word
+setopt COMPLETE_IN_WORD
+setopt CORRECT
+
+# for sharing history between zsh processes
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+
 # turn off annoying history verification, just run the damn command
-setopt no_hist_verify
+setopt NO_HIST_VERIFY
+
+# never ever beep ever
+setopt NO_BEEP
+
+# do not print error on non matched patterns
+setopt NO_NO_MATCH
 
