@@ -76,6 +76,24 @@ processDotDir() {
 }
 
 
+if [ ! -e "$HOME/.gitprofile" ]; then
+    echo "==> Setting up git profile"
+    echo -n "Git Name: "
+    read GITNAME
+    echo -n "Git Email: "
+    read GITEMAIL
+
+    echo "Adding author \"$GITNAME <$GITEMAIL>\""
+
+    cat > $HOME/.gitprofile <<EOF
+# This is an auto-generated system-specific profile imported by .gitconfig
+[user]
+    name = $GITNAME
+    email = $GITEMAIL
+EOF
+    echo "Created system-specific $HOME/.gitprofile"
+fi
+
 echo "==> Updating git submodules"
 git submodule init
 git submodule update

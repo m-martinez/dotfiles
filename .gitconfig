@@ -1,8 +1,6 @@
-[user]
-	name = Marco M
+[include]
+    path = ~/.gitprofile
 [alias]
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-    ; short-hand way to set user email per-project (separates work/home projects)
-    profile = !sh -c 'git config user.email $1' -
 [color]
     ui = auto
