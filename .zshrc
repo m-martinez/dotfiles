@@ -55,7 +55,7 @@ setopt SHARE_HISTORY
 # turn off annoying history verification, just run the damn command
 setopt NO_HIST_VERIFY
 
-# never ever beep ever
+# never ever beep ever. EVER
 setopt NO_BEEP
 
 # do not print error on non matched patterns
