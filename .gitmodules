@@ -13,24 +13,15 @@
 [submodule ".vim/bundle/taglist.vim"]
 	path = .vim/bundle/taglist.vim
 	url = git://github.com/vim-scripts/taglist.vim.git
-[submodule ".vim/bundle/bufexplorer"]
-	path = .vim/bundle/bufexplorer
-	url = git://github.com/vim-scripts/bufexplorer.zip.git
 [submodule ".vim/bundle/VST"]
 	path = .vim/bundle/VST
 	url = git://github.com/vim-scripts/VST.git
 [submodule ".vim/bundle/vim-scala"]
 	path = .vim/bundle/vim-scala
 	url = git://github.com/derekwyatt/vim-scala.git
-[submodule ".mutt/themes/mutt-colors-solarized"]
-	path = .mutt/themes/mutt-colors-solarized
-	url = git://github.com/altercation/mutt-colors-solarized.git
 [submodule ".vim/bundle/mako.vim"]
 	path = .vim/bundle/mako.vim
 	url = git@github.com:vim-scripts/mako.vim.git
-[submodule ".vim/bundle/vim-colors-solarized"]
-	path = .vim/bundle/vim-colors-solarized
-	url = git@github.com:altercation/vim-colors-solarized.git
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = git@github.com:robbyrussell/oh-my-zsh.git
