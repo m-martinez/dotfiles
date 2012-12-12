@@ -112,9 +112,8 @@ if has("gui_running")
   set gfn=Inconsolata:h14
 endif
 
-let g:solarized_termtrans=1
 set background=dark
-colorscheme solarized
+colorscheme ir_black
 
 set encoding=utf8
 try
