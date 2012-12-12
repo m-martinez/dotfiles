@@ -25,3 +25,6 @@
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = git@github.com:robbyrussell/oh-my-zsh.git
+[submodule ".vim/bundle/ir_black"]
+	path = .vim/bundle/ir_black
+	url = git@github.com:m-martinez/ir_black.git
