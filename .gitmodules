@@ -28,3 +28,9 @@
 [submodule ".vim/bundle/ir_black"]
 	path = .vim/bundle/ir_black
 	url = git@github.com:m-martinez/ir_black.git
+[submodule ".vim/bundle/grb256"]
+	path = .vim/bundle/grb256
+	url = git@github.com:m-martinez/grb256.git
+[submodule ".vim/bundle/jellybeans.vim"]
+	path = .vim/bundle/jellybeans.vim
+	url = git@github.com:m-martinez/jellybeans.vim.git

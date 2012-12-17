@@ -113,7 +113,7 @@ if has("gui_running")
 endif
 
 set background=dark
-colorscheme ir_black
+colorscheme grb256
 
 set encoding=utf8
 try
