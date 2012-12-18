@@ -18,10 +18,12 @@ plugins=(git git-extras vi-mode pip nyan)
 # update the path before firing-up OMZ
 # add local bin to the path if not already there
 if [[ "$PATH" != *"$HOME/bin"* ]]; then
-    export PATH=$PATH:$HOME/bin
+    PATH=$PATH:$HOME/bin
 fi
 
 source $ZSH/oh-my-zsh.sh
+
+EDITOR=$(command -v vim)
 
 # turn off special handling of ._* files in tar, etc.
 COPYFILE_DISABLE=1;

@@ -113,7 +113,12 @@ if has("gui_running")
 endif
 
 set background=dark
-colorscheme grb256
+let g:jellybeans_overrides = {
+\    'Normal': { 'guifg': 'e8e8d3', 'guibg': '',
+\                'ctermfg': 'White', 'ctermbg': '',
+\                'attr': '' },
+\}
+colorscheme jellybeans
 
 set encoding=utf8
 try
