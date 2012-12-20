@@ -10,6 +10,9 @@ ZSH_THEME="pygmalion"
 # Uncomment following line if you want to disable autosetting terminal title.
 DISABLE_AUTO_TITLE="true"
 
+# Comment this out to disable bi-weekly auto-update checks
+DISABLE_AUTO_UPDATE="true"
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
