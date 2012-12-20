@@ -29,7 +29,10 @@ source $ZSH/oh-my-zsh.sh
 EDITOR=$(command -v vim)
 
 # turn off special handling of ._* files in tar, etc.
-COPYFILE_DISABLE=1;
+COPYFILE_DISABLE=1
+
+# use theme colors
+LS_COLORS=''
 
 #allow tab completion in the middle of a word
 setopt COMPLETE_IN_WORD
