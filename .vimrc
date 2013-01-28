@@ -53,6 +53,9 @@ autocmd BufNewFile,BufRead *.zcml set filetype=xml
 autocmd BufNewFile,BufRead *.pt set filetype=html
 autocmd BufNewFile,BufRead *.mako set filetype=mako
 
+" python doesn't use brackets, so smart indent is pointless
+autocmd! FileType python set nosmartindent
+
 " Strip  whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
