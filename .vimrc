@@ -96,8 +96,6 @@ set tm=500
 " Wrapping
 set nowrap
 set nolist " list disables line break
-set textwidth=500
-set wrapmargin=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -115,6 +113,12 @@ endif
 set background=dark
 "Disable jellybean's background override
 let g:jellybeans_background_color_256='NONE'
+let g:jellybeans_overrides = {
+    \    'LineNr': {
+    \       'guifg': '777777', 'guibg': '403c41',
+    \       'ctermfg': 'Black', 'ctermbg': 'Black'
+    \       },
+    \}
 colorscheme jellybeans
 
 set encoding=utf8
