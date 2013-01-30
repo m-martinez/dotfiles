@@ -18,10 +18,16 @@ DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git git-extras vi-mode pip nyan)
 
+UNAME=$(uname)
+
 # update the path before firing-up OMZ
 # add local bin to the path if not already there
 if [[ "$PATH" != *"$HOME/bin"* ]]; then
     PATH=$PATH:$HOME/bin
+fi
+
+if [[ "$UNAME" = "Linux" ]]; then
+    PATH=$HOME/Development/adt-bundle-linux-x86_64/sdk/tools:$PATH
 fi
 
 source $ZSH/oh-my-zsh.sh
