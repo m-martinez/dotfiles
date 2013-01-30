@@ -107,6 +107,8 @@ set nolist " list disables line break
 
 syntax enable
 
+set t_Co=256
+
 set shell=/bin/zsh
 
 if has("gui_running")
@@ -115,13 +117,13 @@ endif
 
 set background=dark
 "Disable jellybean's background override
-let g:jellybeans_background_color_256='NONE'
-let g:jellybeans_overrides = {
-    \    'LineNr': {
-    \       'guifg': '777777', 'guibg': '403c41',
-    \       'ctermfg': 'Black', 'ctermbg': 'Black'
-    \       },
-    \}
+"let g:jellybeans_background_color_256='NONE'
+"let g:jellybeans_overrides = {
+"    \    'LineNr': {
+"    \       'guifg': '777777', 'guibg': '403c41',
+"    \       'ctermfg': '777777', 'ctermbg': 'Black'
+"    \       },
+"    \}
 colorscheme jellybeans
 
 set encoding=utf8

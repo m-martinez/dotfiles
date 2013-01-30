@@ -18,9 +18,22 @@ DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git git-extras vi-mode pip nyan)
 
+source $ZSH/oh-my-zsh.sh
+
+
+# turn off special handling of ._* files in tar, etc.
+COPYFILE_DISABLE=1
+
+# Ensure vim is the default editor
+EDITOR=vim
+
+# use theme colors
+LS_COLORS=''
+
 UNAME=$(uname)
 
-EDITOR=vim
+# Ensure terminal is has 256 colors enabled (for Ubuntu)
+TERM=xterm-256color
 
 # update the path before firing-up OMZ
 # add local bin to the path if not already there
@@ -31,16 +44,6 @@ fi
 if [[ "$UNAME" = "Linux" ]]; then
     PATH=$HOME/Development/adt-bundle-linux-x86_64/sdk/tools:$PATH
 fi
-
-source $ZSH/oh-my-zsh.sh
-
-EDITOR=$(command -v vim)
-
-# turn off special handling of ._* files in tar, etc.
-COPYFILE_DISABLE=1
-
-# use theme colors
-LS_COLORS=''
 
 #allow tab completion in the middle of a word
 setopt COMPLETE_IN_WORD
