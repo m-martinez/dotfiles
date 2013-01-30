@@ -20,6 +20,8 @@ plugins=(git git-extras vi-mode pip nyan)
 
 UNAME=$(uname)
 
+EDITOR=vim
+
 # update the path before firing-up OMZ
 # add local bin to the path if not already there
 if [[ "$PATH" != *"$HOME/bin"* ]]; then
