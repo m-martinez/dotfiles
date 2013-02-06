@@ -43,11 +43,10 @@ set autoindent
 set expandtab
 set smarttab
 set smartindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 
 " Exception for indeing is xml/html, since it can get unwieldly
-autocmd FileType mako,html,xml setlocal shiftwidth=2 tabstop=2
 
 autocmd BufNewFile,BufRead *.zcml set filetype=xml
 autocmd BufNewFile,BufRead *.pt set filetype=html
@@ -55,6 +54,7 @@ autocmd BufNewFile,BufRead *.mako set filetype=mako
 
 " python doesn't use brackets, so smart indent is pointless
 autocmd! FileType python set nosmartindent
+autocmd FileType mako,html,xml setlocal shiftwidth=4 tabstop=4
 
 " Strip  whitespace
 autocmd BufWritePre * :%s/\s\+$//e
@@ -107,7 +107,9 @@ set nolist " list disables line break
 
 syntax enable
 
-set t_Co=256
+if $COLORTERM == 'gnome-terminal'
+  set t_Co=256
+endif
 
 set shell=/bin/zsh
 
