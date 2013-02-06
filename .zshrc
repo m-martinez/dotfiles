@@ -38,11 +38,12 @@ UNAME=$(uname)
 # update the path before firing-up OMZ
 # add local bin to the path if not already there
 if [[ "$PATH" != *"$HOME/bin"* ]]; then
-    PATH=$PATH:$HOME/bin
+  PATH=$PATH:$HOME/bin
 fi
 
 if [[ "$UNAME" = "Linux" ]]; then
-    PATH=$HOME/Development/adt-bundle-linux-x86_64/sdk/tools:$PATH
+  ANDROID_HOME=$HOME/Development/adt-bundle-linux-x86_64/sdk
+  PATH=$ANDROID_HOME/tools:$PATH
 fi
 
 #allow tab completion in the middle of a word
