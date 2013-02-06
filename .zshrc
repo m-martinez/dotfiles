@@ -33,7 +33,7 @@ LS_COLORS=''
 UNAME=$(uname)
 
 # Ensure terminal is has 256 colors enabled (for Ubuntu)
-TERM=xterm-256color
+#TERM=xterm-256color
 
 # update the path before firing-up OMZ
 # add local bin to the path if not already there
