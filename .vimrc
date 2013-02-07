@@ -106,9 +106,7 @@ set nolist " list disables line break
 
 syntax enable
 
-if $COLORTERM == 'gnome-terminal'
-  set t_Co=256
-endif
+set t_Co=256
 
 set shell=/bin/zsh
 

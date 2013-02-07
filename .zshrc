@@ -41,10 +41,15 @@ if [[ "$PATH" != *"$HOME/bin"* ]]; then
   PATH=$PATH:$HOME/bin
 fi
 
-if [[ "$UNAME" = "Linux" ]]; then
-  TERM="xterm-256color"
-  ANDROID_HOME=$HOME/Development/adt-bundle-linux-x86_64/sdk
-  PATH=$ANDROID_HOME/tools:$PATH
+# Switch the terminal to 256 colors, but only if it's not in a tumux session
+# (tmux uses screen-256colors which is set in its own configuration file)
+if [[ -n "$DISPLAY" && "$TERM" == "xterm" ]]; then
+  TERM=xterm-256color
+fi
+
+# Add android developer tools if available (unbuntu desktop)
+if [[ -d "$HOME/Development/adt-bundle-linux-x86_64" ]]; then
+  PATH=$HOME/Development/adt-bundle-linux-x86_64/sdk/tools:$PATH
 fi
 
 #allow tab completion in the middle of a word
