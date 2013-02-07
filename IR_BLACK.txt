@@ -1,0 +1,22 @@
+black: #000000 (0, 0, 0)
+light black: #7C7C7C 124, 124, 124 
+red: #FF6C60 255, 108, 96 
+light red: #FFB6B0 255, 182, 176 
+green: #A8FF60 168, 255, 96 
+light green: #CEFFAC 206, 255, 172 
+yellow: #FFFFB6 255, 255, 182 
+light yellow: #FFFFCC 255, 255, 204 
+blue: #96CBFE 150, 203, 254 
+light blue: #B6DCFF 182, 220, 255 
+magenta: #FF73FD 255, 115, 253 
+light magenta: #FF9CFE 255, 156, 254 
+cyan: #C6C5FE 198, 197, 254 
+light cyan: #DFDFFE 223, 223, 254 
+white: #EEEEEE 238, 238, 238 
+light white: #FFFFFF 255, 255, 255
+
+text: #F2F2F2 242, 242, 242 
+bold text: #FFFFFF 255, 255, 255 
+selection: #12132B 18, 19, 43 
+cursor: #FFA560 255, 165, 96 
+background: #000000 0, 0, 0
