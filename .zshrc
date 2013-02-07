@@ -42,6 +42,7 @@ if [[ "$PATH" != *"$HOME/bin"* ]]; then
 fi
 
 if [[ "$UNAME" = "Linux" ]]; then
+  TERM="xterm-256color"
   ANDROID_HOME=$HOME/Development/adt-bundle-linux-x86_64/sdk
   PATH=$ANDROID_HOME/tools:$PATH
 fi
