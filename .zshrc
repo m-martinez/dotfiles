@@ -48,8 +48,8 @@ if [[ -n "$DISPLAY" && "$TERM" == "xterm" ]]; then
 fi
 
 # Add android developer tools if available (unbuntu desktop)
-if [[ -d "$HOME/Development/adt-bundle-linux-x86_64" ]]; then
-  PATH=$HOME/Development/adt-bundle-linux-x86_64/sdk/tools:$PATH
+if [[ -d "$HOME/Tools/adt" ]]; then
+  PATH=$PATH:$HOME/Tools/adt/sdk/tools
 fi
 
 #allow tab completion in the middle of a word
