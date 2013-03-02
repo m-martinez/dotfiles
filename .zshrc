@@ -49,7 +49,8 @@ fi
 
 # Add android developer tools if available (unbuntu desktop)
 if [[ -d "$HOME/Tools/adt" ]]; then
-  PATH=$PATH:$HOME/Tools/adt/sdk/tools
+  ANDROID_HOME=$HOME/Tools/adt/sdk
+  PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 fi
 
 #allow tab completion in the middle of a word
