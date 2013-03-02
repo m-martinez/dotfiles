@@ -1,7 +1,0 @@
-[include]
-    ; system-specific user profile, import relative as 1.7 doesn't quite expand ~
-    path = .gitprofile
-[alias]
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-[color]
-    ui = auto
