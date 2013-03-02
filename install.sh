@@ -15,6 +15,7 @@ EXCLUDE=(
     .git
     .gitignore
     .gitmodules
+    .git
     .svn
     .hg
     .DS_Store
@@ -54,6 +55,9 @@ linkDotfile() {
     # symlink the conf file
     if [ ! -e "$TARGET" ]; then
         echo "Linking: ${SOURCE##*/}"
+        if [ -L "$TARGET" ]; then
+            rm -f $TARGET
+        fi
         ln -s $SOURCE $TARGET
 
     # warn the user that an existing file is in the way
