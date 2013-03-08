@@ -50,7 +50,7 @@ fi
 # Add android developer tools if available (unbuntu desktop)
 if [[ -d "$HOME/Tools/adt" ]]; then
   export ANDROID_HOME=$HOME/Tools/adt/sdk
-  PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+  export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 elif [[ -d "/usr/local/Cellar/android-sdk" ]]; then
   # TODO: will have to somehow calculate this if it ever changes...
   export ANDROID_HOME="/usr/local/Cellar/android-sdk/r21"
