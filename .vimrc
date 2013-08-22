@@ -14,7 +14,7 @@ call pathogen#infect()
 " => NERDTree preferences
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let NERDTreeIgnore=['\.o$', '\~$', '\.egg-info$', '\.pyc$', 'develop-eggs$', 'bin$', 'parts$']
+let NERDTreeIgnore=['\.o$', '\~$', '\.egg-info$', '\.pyc$', 'develop-eggs$', 'bin$', 'parts$', '__pycache__$']
 
 " do not show hidden files by default
 let NERDTreeShowHidden=0
@@ -133,3 +133,13 @@ set ffs=unix,dos,mac "Default file types
 set nobackup
 set nowb
 set noswapfile
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VIM Slime peferences
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:slime_target = "tmux"
+
+" Using STDIN causes issues, unfortunately, so use a FILE
+let g:slime_paste_file = tempname()
+

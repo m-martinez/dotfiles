@@ -41,6 +41,9 @@ if [[ "$PATH" != *"$HOME/bin"* ]]; then
   PATH=$PATH:$HOME/bin
 fi
 
+NODE_PATH="/usr/lib/node_modules"
+PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
+
 # Switch the terminal to 256 colors, but only if it's not in a tumux session
 # (tmux uses screen-256colors which is set in its own configuration file)
 if [[ -n "$DISPLAY" && "$TERM" == "xterm" ]]; then
