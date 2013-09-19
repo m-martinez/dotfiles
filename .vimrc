@@ -96,8 +96,8 @@ set tm=500
 
 
 " Wrapping
-set nowrap
-set nolist " list disables line break
+set textwidth=0
+set wrapmargin=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
