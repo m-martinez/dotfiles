@@ -143,3 +143,12 @@ let g:slime_target = "tmux"
 " Using STDIN causes issues, unfortunately, so use a FILE
 let g:slime_paste_file = tempname()
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Tabular preferences
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+
