@@ -16,10 +16,22 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras vi-mode pip)
+plugins=(git git-extras vi-mode pip ssh-agent tmux)
+
+# ensure that there are no other ssh-agent processes running,
+# otherwise you will have a headache
+# list them:
+# ps -e  | grep [s]sh-agent
+# ``kill`` them
+# then relogin
+zstyle :omz:plugins:ssh-agent identities id_rsa git_rsa beast
+
+ZSH_TMUX_AUTOSTART=true
+
 
 source $ZSH/oh-my-zsh.sh
 
+alias ssh="ssh -A"
 
 # turn off special handling of ._* files in tar, etc.
 COPYFILE_DISABLE=1
@@ -73,29 +85,3 @@ setopt NO_BEEP
 # do not print error on non matched patterns
 setopt NO_NO_MATCH
 
-# Startup SSH-AGENT for non-gui interfaces
-# http://mah.everybody.org/docs/ssh
-if [[ "$UNAME" == "Linux" ]]; then
-
-  # Startup SSH-AGENT for non-gui interfacesc
-  SSH_ENV="$HOME/.ssh/environment"
-
-  function start_agent {
-       echo "Initialising new SSH agent..."
-       /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-       echo succeeded
-       chmod 600 "${SSH_ENV}"
-       . "${SSH_ENV}" > /dev/null
-       /usr/bin/ssh-add;
-  }
-
-  # Source SSH settings, if applicable
-  if [ -f "${SSH_ENV}" ]; then
-       . "${SSH_ENV}" > /dev/null
-       ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-           start_agent;
-       }
-  else
-       start_agent;
-  fi
-fi
