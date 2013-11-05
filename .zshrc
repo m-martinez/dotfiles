@@ -32,9 +32,6 @@ LS_COLORS=''
 
 UNAME=$(uname)
 
-# Ensure terminal is has 256 colors enabled (for Ubuntu)
-#TERM=xterm-256color
-
 # update the path before firing-up OMZ
 # add local bin to the path if not already there
 if [[ "$PATH" != *"$HOME/bin"* ]]; then
@@ -76,3 +73,29 @@ setopt NO_BEEP
 # do not print error on non matched patterns
 setopt NO_NO_MATCH
 
+# Startup SSH-AGENT for non-gui interfaces
+# http://mah.everybody.org/docs/ssh
+if [[ "$UNAME" == "Linux" ]]; then
+
+  # Startup SSH-AGENT for non-gui interfacesc
+  SSH_ENV="$HOME/.ssh/environment"
+
+  function start_agent {
+       echo "Initialising new SSH agent..."
+       /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+       echo succeeded
+       chmod 600 "${SSH_ENV}"
+       . "${SSH_ENV}" > /dev/null
+       /usr/bin/ssh-add;
+  }
+
+  # Source SSH settings, if applicable
+  if [ -f "${SSH_ENV}" ]; then
+       . "${SSH_ENV}" > /dev/null
+       ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+           start_agent;
+       }
+  else
+       start_agent;
+  fi
+fi
