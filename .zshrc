@@ -26,7 +26,7 @@ plugins=(git git-extras vi-mode pip ssh-agent tmux)
 # then relogin
 zstyle :omz:plugins:ssh-agent identities id_rsa git_rsa beast
 
-ZSH_TMUX_AUTOSTART=true
+#ZSH_TMUX_AUTOSTART=true
 
 
 source $ZSH/oh-my-zsh.sh
@@ -57,6 +57,11 @@ PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
 # (tmux uses screen-256colors which is set in its own configuration file)
 if [[ -n "$DISPLAY" && "$TERM" == "xterm" ]]; then
   TERM=xterm-256color
+fi
+
+# Postgres 9.3 installed on CentOS
+if [[ -d "/usr/pgsql-9.3/bin/" ]]; then
+  export PATH="/usr/pgsql-9.3/bin/:$PATH"
 fi
 
 # Add android developer tools if available (unbuntu desktop)
