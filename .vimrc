@@ -96,9 +96,8 @@ set tm=500
 
 
 " Wrapping
-set textwidth=0
-set wrapmargin=0
-
+set tw=0 #textwidth
+set wm=0 #wrapmargin
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
