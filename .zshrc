@@ -16,7 +16,7 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras vi-mode pip ssh-agent tmux)
+plugins=(git git-extras vi-mode pip virtualenv ssh-agent tmux)
 
 # ensure that there are no other ssh-agent processes running,
 # otherwise you will have a headache

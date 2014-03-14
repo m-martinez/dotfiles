@@ -49,3 +49,6 @@
 [submodule ".vim/bundle/tabular"]
 	path = .vim/bundle/tabular
 	url = git@github.com:godlygeek/tabular.git
+[submodule ".vim/bundle/vim-json"]
+	path = .vim/bundle/vim-json
+	url = git@github.com:elzr/vim-json.git
