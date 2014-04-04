@@ -52,3 +52,6 @@
 [submodule ".vim/bundle/vim-json"]
 	path = .vim/bundle/vim-json
 	url = git@github.com:elzr/vim-json.git
+[submodule ".vim/bundle/riv.vim"]
+	path = .vim/bundle/riv.vim
+	url = git@github.com:Rykka/riv.vim.git
