@@ -5,7 +5,9 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="pygmalion"
+#ZSH_THEME="gentoo"
+#ZSH_THEME="pygmalion"
+ZSH_THEME="ys"
 
 # Uncomment following line if you want to disable autosetting terminal title.
 DISABLE_AUTO_TITLE="true"
@@ -16,7 +18,7 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras vi-mode pip virtualenv ssh-agent tmux)
+plugins=(git git-extras vi-mode pip ssh-agent tmux)
 
 # ensure that there are no other ssh-agent processes running,
 # otherwise you will have a headache
@@ -25,9 +27,6 @@ plugins=(git git-extras vi-mode pip virtualenv ssh-agent tmux)
 # ``kill`` them
 # then relogin
 zstyle :omz:plugins:ssh-agent identities id_rsa git_rsa beast
-
-#ZSH_TMUX_AUTOSTART=true
-
 
 source $ZSH/oh-my-zsh.sh
 
@@ -53,6 +52,7 @@ fi
 NODE_PATH="/usr/lib/node_modules"
 
 PIP_REQUIRE_VIRTUALENV=true
+PIP_RESPECT_VIRTUALENV=true
 
 # Switch the terminal to 256 colors, but only if it's not in a tumux session
 # (tmux uses screen-256colors which is set in its own configuration file)
@@ -90,4 +90,3 @@ setopt NO_BEEP
 
 # do not print error on non matched patterns
 setopt NO_NO_MATCH
-
