@@ -7,7 +7,7 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="gentoo"
 #ZSH_THEME="pygmalion"
-ZSH_THEME="ys"
+#ZSH_THEME="ys"
 
 # Uncomment following line if you want to disable autosetting terminal title.
 DISABLE_AUTO_TITLE="true"
@@ -18,7 +18,7 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras vi-mode pip ssh-agent tmux)
+plugins=(git git-extras vi-mode pip ssh-agent tmux, virtualenv)
 
 # ensure that there are no other ssh-agent processes running,
 # otherwise you will have a headache
@@ -90,3 +90,56 @@ setopt NO_BEEP
 
 # do not print error on non matched patterns
 setopt NO_NO_MATCH
+
+# THEME BASED ON YS to add virtualenv info
+# Clean, simple, compatible and meaningful.
+# Tested on Linux, Unix and Windows under ANSI colors.
+# It is recommended to use with a dark background and the font Inconsolata.
+# Colors: black, red, green, yellow, *blue, magenta, cyan, and white.
+#
+# http://ysmood.org/wp/2013/03/my-ys-terminal-theme/
+# Mar 2013 ys
+
+# Machine name.
+function box_name {
+    [ -f ~/.box-name ] && cat ~/.box-name || hostname
+}
+
+# Directory info.
+local current_dir='${PWD/#$HOME/~}'
+
+# Git info.
+local git_info='$(git_prompt_info)'
+ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[white]%}on%{$reset_color%} git:%{$fg[cyan]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}x"
+ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}o"
+
+local virtualenv_info='$(virtualenv_prompt_info)'
+
+# Prompt format: \n # USER at MACHINE in [VIRTUALENV] DIRECTORY on git:BRANCH STATE [TIME] \n $
+PROMPT="
+%{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
+%{$fg[cyan]%}%n \
+%{$fg[white]%}at \
+%{$fg[green]%}$(box_name) \
+%{$fg[white]%}in \
+${virtualenv_info} \
+%{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
+${git_info} \
+%{$fg[white]%}[%*]
+%{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
+
+if [[ "$(whoami)" == "root" ]]; then
+PROMPT="
+%{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
+%{$bg[yellow]%}%{$fg[cyan]%}%n%{$reset_color%} \
+%{$fg[white]%}at \
+%{$fg[green]%}$(box_name) \
+%{$fg[white]%}in \
+%{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
+${git_info} \
+${virtualenv_info} \
+%{$fg[white]%}[%*]
+%{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
+fi
