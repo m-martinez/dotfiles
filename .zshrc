@@ -36,7 +36,7 @@ alias ssh="ssh -A"
 COPYFILE_DISABLE=1
 
 # Ensure vim is the default editor
-EDITOR=vim
+export EDITOR=vim
 
 # use theme colors
 LS_COLORS=''
@@ -81,6 +81,15 @@ setopt CORRECT
 # for sharing history between zsh processes
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+alias history='history 1'
+WORDCHARS="${WORDCHARS:s#/#}"
+WORDCHARS="${WORDCHARS:s#.#}"
+# completion in the middle of a line
+bindkey '^i' expand-or-complete-prefix
+bindkey '^R' history-incremental-search-backward
 
 # turn off annoying history verification, just run the damn command
 setopt NO_HIST_VERIFY
