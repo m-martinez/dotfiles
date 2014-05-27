@@ -25,18 +25,9 @@
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = git@github.com:robbyrussell/oh-my-zsh.git
-[submodule ".vim/bundle/ir_black"]
-	path = .vim/bundle/ir_black
-	url = git@github.com:m-martinez/ir_black.git
-[submodule ".vim/bundle/grb256"]
-	path = .vim/bundle/grb256
-	url = git@github.com:m-martinez/grb256.git
 [submodule ".vim/bundle/jellybeans.vim"]
 	path = .vim/bundle/jellybeans.vim
 	url = git@github.com:m-martinez/jellybeans.vim.git
-[submodule ".vim/bundle/vim-lucius"]
-	path = .vim/bundle/vim-lucius
-	url = git@github.com:m-martinez/vim-lucius.git
 [submodule ".vim/bundle/vim-slime"]
 	path = .vim/bundle/vim-slime
 	url = git://github.com/jpalardy/vim-slime.git
