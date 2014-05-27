@@ -1,3 +1,6 @@
+# System OS
+UNAME=$(uname)
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -18,46 +21,35 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras vi-mode pip ssh-agent tmux, virtualenv)
+plugins=(git git-extras vi-mode pip tmux virtualenv)
 
-# ensure that there are no other ssh-agent processes running,
-# otherwise you will have a headache
-# list them:
+# Use ssh-agent of Linux distributes (OSX uses built-in keychain)
+# Note: ensure that there are no other ssh-agent processes running:
 # ps -e  | grep [s]sh-agent
-# ``kill`` them
-# then relogin
-zstyle :omz:plugins:ssh-agent identities id_rsa git_rsa beast
+if [[ "$UNAME" == 'Linux' ]]; then
+  plugins+=(ssh-agent)
+  zstyle :omz:plugins:ssh-agent identities id_rsa git_rsa beast
+fi
 
 source $ZSH/oh-my-zsh.sh
 
 alias ssh="ssh -A"
 
 # turn off special handling of ._* files in tar, etc.
-COPYFILE_DISABLE=1
+export COPYFILE_DISABLE=1
 
 # Ensure vim is the default editor
 export EDITOR=vim
 
-# use theme colors
-LS_COLORS=''
+export PIP_REQUIRE_VIRTUALENV=true
+export PIP_RESPECT_VIRTUALENV=true
 
-UNAME=$(uname)
+export NODE_PATH="/usr/lib/node_modules"
 
 # update the path before firing-up OMZ
 # add local bin to the path if not already there
 if [[ "$PATH" != *"$HOME/bin"* ]]; then
-  PATH=$PATH:$HOME/bin
-fi
-
-NODE_PATH="/usr/lib/node_modules"
-
-PIP_REQUIRE_VIRTUALENV=true
-PIP_RESPECT_VIRTUALENV=true
-
-# Switch the terminal to 256 colors, but only if it's not in a tumux session
-# (tmux uses screen-256colors which is set in its own configuration file)
-if [[ -n "$DISPLAY" && "$TERM" == "xterm" ]]; then
-  TERM=xterm-256color
+  export PATH=$PATH:$HOME/bin
 fi
 
 # Postgres 9.3 installed on CentOS
@@ -99,6 +91,15 @@ setopt NO_BEEP
 
 # do not print error on non matched patterns
 setopt NO_NO_MATCH
+
+# use theme colors
+export LS_COLORS=''
+
+# Switch the terminal to 256 colors, but only if it's not in a tumux session
+# (tmux uses screen-256colors which is set in its own configuration file)
+if [[ -n "$DISPLAY" && "$TERM" == "xterm" ]]; then
+  export TERM=xterm-256color
+fi
 
 # THEME BASED ON YS to add virtualenv info
 # Clean, simple, compatible and meaningful.
