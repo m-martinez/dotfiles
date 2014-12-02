@@ -27,7 +27,7 @@
 	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule ".vim/bundle/jellybeans.vim"]
 	path = .vim/bundle/jellybeans.vim
-	url = https://github.com/m-martinez/jellybeans.vim.git
+	url = https://github.com/nanotech/jellybeans.vim.git
 [submodule ".vim/bundle/vim-slime"]
 	path = .vim/bundle/vim-slime
 	url = https://github.com/jpalardy/vim-slime.git
