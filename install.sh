@@ -27,8 +27,7 @@ echo "    git config --global user.email <YOUR EMAIL>"
 #
 
 echo "==> Updating git submodules"
-git submodule init
-git submodule update
+git submodule update --init --recursive
 
 #
 # LIMIT ACCESS
