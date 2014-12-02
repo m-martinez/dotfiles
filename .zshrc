@@ -35,6 +35,9 @@ source $ZSH/oh-my-zsh.sh
 
 alias ssh="ssh -A"
 
+# always prefer local npm
+alias npm-exec="PATH=$(npm bin):$PATH"
+
 # turn off special handling of ._* files in tar, etc.
 export COPYFILE_DISABLE=1
 
