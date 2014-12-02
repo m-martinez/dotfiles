@@ -118,41 +118,45 @@ function box_name {
     [ -f ~/.box-name ] && cat ~/.box-name || hostname
 }
 
-# Directory info.
-local current_dir='${PWD/#$HOME/~}'
+function make_prompt {
+  # Directory info.
+  local current_dir='${PWD/#$HOME/~}'
 
-# Git info.
-local git_info='$(git_prompt_info)'
-ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[white]%}on%{$reset_color%} git:%{$fg[cyan]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}x"
-ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}o"
+  # Git info.
+  local git_info='$(git_prompt_info)'
+  ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[white]%}on%{$reset_color%} git:%{$fg[cyan]%}"
+  ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+  ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}x"
+  ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}o"
 
-local virtualenv_info='$(virtualenv_prompt_info)'
+  local virtualenv_info='$(virtualenv_prompt_info)'
 
-# Prompt format: \n # USER at MACHINE in [VIRTUALENV] DIRECTORY on git:BRANCH STATE [TIME] \n $
-PROMPT="
+  # Prompt format: \n # USER at MACHINE in [VIRTUALENV] DIRECTORY on git:BRANCH STATE [TIME] \n $
+  PROMPT="\
 %{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
-%{$fg[cyan]%}%n \
-%{$fg[white]%}at \
-%{$fg[green]%}$(box_name) \
-%{$fg[white]%}in \
+%{$fg[cyan]%}%n\
+%{$fg[white]%}@\
+%{$fg[green]%}$(box_name)\
+%{$fg[white]%}:\
 ${virtualenv_info}\
 %{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
 ${git_info} \
-%{$fg[white]%}[%*]
+%{$fg[white]%}[%*] \
 %{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
 
-if [[ "$(whoami)" == "root" ]]; then
-PROMPT="
-%{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
-%{$bg[yellow]%}%{$fg[cyan]%}%n%{$reset_color%} \
-%{$fg[white]%}at \
-%{$fg[green]%}$(box_name) \
-%{$fg[white]%}in \
+  if [[ "$(whoami)" == "root" ]]; then
+  PROMPT="\
+%{$terminfo[bold]$fg[blue]%}#%{$reset_color%}\
+%{$bg[yellow]%}%{$fg[cyan]%}%n%{$reset_color%}\
+%{$fg[white]%}@\
+%{$fg[green]%}$(box_name)\
+%{$fg[white]%}:\
 %{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
 ${git_info} \
 ${virtualenv_info} \
-%{$fg[white]%}[%*]
+%{$fg[white]%}[%*] \
 %{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
-fi
+  fi
+}
+
+make_prompt
