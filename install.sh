@@ -6,131 +6,80 @@
 #
 
 # Get the directory location of this script
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+HERE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# Files we do not want linked
-EXCLUDE=(
-    ..
-    .
-    .git
-    .gitignore
-    .gitmodules
-    .git
-    .svn
-    .hg
-    .DS_Store
-    .AppleDouble
-)
+#
+# GIT CONFIG
+#
 
-# Directories not under version control that need to be created
-MKDIRS=(
-    "$HOME/.buildout"
-    "$HOME/.buildout/eggs"
-    "$HOME/.buildout/downloads"
-    "$HOME/.buildout/zope"
-    "$HOME/.buildout/extends"
-)
+echo "==> Configuring git"
 
-notExcluded() {
-    # check that the value is not null
-    if [ -z "$1" ]; then
-        return
-    fi
+git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+git config --global color.ui auto
 
-    for i in ${EXCLUDE[@]}; do
-        if [ $i = $1 ]; then
-            # the item exists
-            return 1
-        fi
-    done
+echo "Done configuring git. If you will be managing git projects, remember to run the following commands:"
+echo
+echo "    git config --global user.name <YOUR FULLNAME>"
+echo "    git config --global user.email <YOUR EMAIL>"
 
-    # it did not exist
-    return 0
-}
-
-linkDotfile() {
-    local SOURCE="$1"
-    local TARGET="$2"
-
-    # symlink the conf file
-    if [ ! -e "$TARGET" ]; then
-        echo "Linking: ${SOURCE##*/}"
-        if [ -L "$TARGET" ]; then
-            rm -f $TARGET
-        fi
-        ln -s $SOURCE $TARGET
-
-    # warn the user that an existing file is in the way
-    elif [ ! -h "$TARGET" -a -e "$TARGET" ]; then
-        echo "Remove $TARGET so that it can be linked"
-
-    fi
-}
-
-processDotDir() {
-    local dot_directory="$1"
-
-    # if the directory doesn't exist, let's create it
-    if [[ ! -d "$dot_directory" ]] && [[ ! -a "$dot_directory" ]]; then
-        mkdir -p "$dot_directory" && echo "created a $dot_directory directory"
-        chmod 700 "$dot_directory"
-    elif [[ ! -d "$dot_directory" ]] && [[ -a "$dot_directory" ]]; then
-        echo "something in the way of $dot_directory being created"
-    fi
-}
-
-
-if [ ! -e "$HOME/.gitconfig" ]; then
-    echo "==> Setting up git profile"
-
-    echo -n "Git Name: "
-    read GITNAME
-    echo -n "Git Email: "
-    read GITEMAIL
-
-    echo "Adding author \"$GITNAME <$GITEMAIL>\""
-
-    cat > $HOME/.gitconfig <<EOF
-# This is an auto-generated system-specific profile imported by .gitconfig
-[alias]
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-[color]
-  ui = auto
-[user]
-  name = $GITNAME
-  email = $GITEMAIL
-EOF
-    echo "Created system-specific $HOME/.gitconfig"
-fi
+#
+# GIT MODULES
+#
 
 echo "==> Updating git submodules"
 git submodule init
 git submodule update
 
-# make sure the dotfiles are only rwx by the owner
-chmod 700 $DIR
+#
+# LIMIT ACCESS
+#
 
-# make sure my home dir is secured
-chmod 700 $HOME
+chmod 700 $HERE   # make sure the dotfiles are only rwx by the owner
+chmod 700 $HOME   # make sure my home dir is secured
+
+#
+# LINK DOT FILES
+#
 
 echo "==> Linking dot files"
-for DOTFILE in $DIR/.*; do
-    # ignore certain directories
-    if notExcluded "${DOTFILE##*/}"; then
-        linkDotfile $DOTFILE "$HOME/${DOTFILE##*/}"
-    fi
+for DOTFILE in $HERE/_*; do
+  DEST="$HOME/.${DOTFILE##*/_}"
+  if [ -e "$DEST" -a ! -L "$DEST" ]; then
+		echo "'$DEST' is an actual file, remove it so it can be linked"
+  else
+		echo "Linking: $DOTFILE -> $DEST"
+		ln -sfn $DOTFILE $DEST
+	fi
 done
 
-echo "==> Creating dot directories"
-for DOTDIR in "${MKDIRS[@]}"; do
-    processDotDir $DOTDIR
+#
+# BUILDOUT
+#
+
+BUILDOUTDIRS=(
+  "$HOME/.buildout"
+  "$HOME/.buildout/eggs"
+  "$HOME/.buildout/downloads"
+  "$HOME/.buildout/zope"
+  "$HOME/.buildout/extends"
+)
+
+echo "==> Creating untracked dot directories"
+for DOTDIR in "${BUILDOUTDIRS[@]}"; do
+  # if the directory doesn't exist, let's create it
+  if [[ ! -d "$DOTDIR" ]] && [[ ! -a "$DOTDIR" ]]; then
+    mkdir -p "$DOTDIR" && echo "created a $DOTDIR directory"
+    chmod 700 "$DOTDIR"
+  elif [[ ! -d "$DOTDIR" ]] && [[ -a "$DOTDIR" ]]; then
+    echo "something in the way of $DOTDIR being created"
+  fi
 done
 
 echo "==> Setting up buildout files"
 BUILDOUT_DIR="$HOME/.buildout"
 if [[ -d "$BUILDOUT_DIR" ]] && [ ! -e "$BUILDOUT_DIR/default.cfg" ]; then
-    # create the default.cfg file
-    cat > $BUILDOUT_DIR/default.cfg <<EOF
+  # create the default.cfg file
+  cat > $BUILDOUT_DIR/default.cfg <<EOF
 [buildout]
 eggs-directory = $HOME/.buildout/eggs
 download-cache = $HOME/.buildout/downloads
@@ -140,9 +89,12 @@ extends-cache = $HOME/.buildout/extends
 [instance]
 event-log-level = debug
 EOF
-    echo "Created default.cfg at: $BUILDOUT_DIR"
+  echo "Created default.cfg at: $BUILDOUT_DIR"
 fi
+
+#
+# ZSHELL
+#
 
 echo "==> Loading zshell configuration"
 source ~/.zshrc
-
