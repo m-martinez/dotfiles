@@ -1,3 +1,2 @@
 # Files that are automatically added that we don't want to keep track of
-.vim/.netrwhist
-.weechat/logs
+_vim/.netrwhist
