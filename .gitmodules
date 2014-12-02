@@ -1,0 +1,45 @@
+[submodule "_vim/bundle/nerdtree"]
+	path = _vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "_vim/bundle/vim-surround"]
+	path = _vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "_vim/bundle/nerdcommenter"]
+	path = _vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "_vim/bundle/vim-pathogen"]
+	path = _vim/bundle/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule "_vim/bundle/taglist.vim"]
+	path = _vim/bundle/taglist.vim
+	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "_vim/bundle/VST"]
+	path = _vim/bundle/VST
+	url = https://github.com/vim-scripts/VST.git
+[submodule "_vim/bundle/vim-scala"]
+	path = _vim/bundle/vim-scala
+	url = https://github.com/derekwyatt/vim-scala.git
+[submodule "_vim/bundle/mako.vim"]
+	path = _vim/bundle/mako.vim
+	url = https://github.com/vim-scripts/mako.vim.git
+[submodule "_oh-my-zsh"]
+	path = _oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "_vim/bundle/jellybeans.vim"]
+	path = _vim/bundle/jellybeans.vim
+	url = https://github.com/nanotech/jellybeans.vim.git
+[submodule "_vim/bundle/vim-slime"]
+	path = _vim/bundle/vim-slime
+	url = https://github.com/jpalardy/vim-slime.git
+[submodule "_vim/bundle/vim-less"]
+	path = _vim/bundle/vim-less
+	url = https://github.com/groenewege/vim-less.git
+[submodule "_vim/bundle/syntastic"]
+	path = _vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "_vim/bundle/tabular"]
+	path = _vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "_vim/bundle/vim-json"]
+	path = _vim/bundle/vim-json
+	url = https://github.com/elzr/vim-json.git
