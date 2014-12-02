@@ -35,8 +35,10 @@ source $ZSH/oh-my-zsh.sh
 
 alias ssh="ssh -A"
 
-# always prefer local npm
-alias npm-exec="PATH=$(npm bin):$PATH"
+# always prefer local npm (only alias if npm is actually installed)
+if hash npm 2>/dev/null; then
+  alias npm-exec="PATH=$(npm bin):$PATH"
+fi
 
 # turn off special handling of ._* files in tar, etc.
 export COPYFILE_DISABLE=1
