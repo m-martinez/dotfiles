@@ -96,4 +96,4 @@ fi
 #
 
 echo "==> Loading zshell configuration"
-. ~/.zshrc
+source ~/.zshrc
