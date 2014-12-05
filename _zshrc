@@ -31,7 +31,7 @@ if [[ "$HOSTNAME" == 'diddykong' ]]; then
   zstyle :omz:plugins:ssh-agent identities git_rsa beast
 fi
 
-source $ZSH/oh-my-zsh.sh
+. $ZSH/oh-my-zsh.sh
 
 # always prefer local npm (only alias if npm is actually installed)
 if hash npm 2>/dev/null; then
