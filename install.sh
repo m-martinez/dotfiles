@@ -46,9 +46,9 @@ for DOTFILE in $HERE/_*; do
   if [ -e "$DEST" -a ! -L "$DEST" ]; then
 		echo "Deleting '$DEST' so we can use ours"
     rm -f "$DEST"
+	fi
   echo "Linking: $DOTFILE -> $DEST"
   ln -sfn $DOTFILE $DEST
-	fi
 done
 
 #

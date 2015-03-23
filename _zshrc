@@ -28,7 +28,7 @@ plugins=(git git-extras vi-mode pip tmux virtualenv)
 # ps -e  | grep [s]sh-agent
 if [[ "$HOSTNAME" == 'diddykong' ]]; then
   plugins+=(ssh-agent)
-  zstyle :omz:plugins:ssh-agent identities git_rsa beast
+  zstyle :omz:plugins:ssh-agent identities git_rsa ssh_rsa beast
 fi
 
 source $ZSH/oh-my-zsh.sh
