@@ -14,7 +14,7 @@ call pathogen#infect()
 " => NERDTree preferences
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let NERDTreeIgnore=['\.o$', '\~$', '\.egg-info$', '\.pyc$', 'develop-eggs$', 'bin$', 'parts$', '__pycache__$']
+let NERDTreeIgnore=['\.o$', '\~$', '\.egg-info$', '\.pyc$', 'develop-eggs$', 'parts$', '__pycache__$']
 
 " do not show hidden files by default
 let NERDTreeShowHidden=0
@@ -49,6 +49,7 @@ set shiftwidth=2
 autocmd BufNewFile,BufRead *.zcml set filetype=xml
 autocmd BufNewFile,BufRead *.pt set filetype=html
 autocmd BufNewFile,BufRead *.mako set filetype=mako
+autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 " python doesn't use brackets, so smart indent is pointless
 " also make the indentations wider so we can see
