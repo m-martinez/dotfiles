@@ -44,11 +44,11 @@ echo "==> Linking dot files"
 for DOTFILE in $HERE/_*; do
   DEST="$HOME/.${DOTFILE##*/_}"
   if [ -e "$DEST" -a ! -L "$DEST" ]; then
-		echo "'$DEST' is an actual file, remove it so it can be linked"
-  else
-		echo "Linking: $DOTFILE -> $DEST"
-		ln -sfn $DOTFILE $DEST
+		echo "Deleting '$DEST' so we can use ours"
+    rm -f "$DEST"
 	fi
+  echo "Linking: $DOTFILE -> $DEST"
+  ln -sfn $DOTFILE $DEST
 done
 
 #
