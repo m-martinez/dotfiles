@@ -33,6 +33,12 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
+
+# Occansionally the terminal will end up in a bad state as a result
+# from interrupting PDB or some other process.
+# Symptoms include: new line not working; backspace stops working; etc
+alias fix-terminal="stty sane"
+
 # always prefer local npm (only alias if npm is actually installed)
 if hash npm 2>/dev/null; then
   alias npm-exec="PATH=$(npm bin):$PATH"
