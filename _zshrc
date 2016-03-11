@@ -60,6 +60,7 @@ if [[ -e $VIRTUALENVWRAPPER ]]; then
   export WORKON_HOME=$HOME/.virtualenvs
   export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.5
   source "$VIRTUALENVWRAPPER"
+  function CURRENT_PROJECT { basename "$VIRTUAL_ENV" | cut -d '-' -f 2- }
 fi
 
 export NODE_PATH="/usr/lib/node_modules"
