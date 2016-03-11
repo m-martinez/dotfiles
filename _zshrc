@@ -70,9 +70,9 @@ if [[ "$PATH" != *"$HOME/bin"* ]]; then
   export PATH=$PATH:$HOME/bin
 fi
 
-# Postgres 9.3 installed on CentOS
-if [[ -d "/usr/pgsql-9.3/bin/" ]]; then
-  export PATH="/usr/pgsql-9.3/bin/:$PATH"
+# Postgres 9.5 installed on CentOS
+if [[ -d "/usr/pgsql-9.5/bin/" ]]; then
+  export PATH="/usr/pgsql-9.5/bin/:$PATH"
 fi
 
 # Add android developer tools if available (unbuntu desktop)
