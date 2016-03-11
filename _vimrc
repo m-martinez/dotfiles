@@ -56,6 +56,10 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd! FileType python set nosmartindent
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
 
+" Show json quoting
+set conceallevel=0
+let g:vim_json_syntax_conceal=0
+
 " Strip  whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
