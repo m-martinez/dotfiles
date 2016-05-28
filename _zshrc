@@ -43,7 +43,7 @@ alias fix-terminal="stty sane"
 
 # always prefer local npm (only alias if npm is actually installed)
 if hash npm 2>/dev/null; then
-  alias npm-exec="PATH=$(npm bin):$PATH"
+  export PATH="node_modules/.bin:$PATH"
 fi
 
 # turn off special handling of ._* files in tar, etc.

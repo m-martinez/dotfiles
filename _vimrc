@@ -17,7 +17,7 @@ call pathogen#infect()
 let NERDTreeIgnore=['\.o$', '\~$', '\.egg-info$', '\.pyc$', 'develop-eggs$', 'parts$', '__pycache__$']
 
 " do not show hidden files by default
-let NERDTreeShowHidden=0
+let NERDTreeShowHidden=1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -156,4 +156,9 @@ vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
 
+
+let g:syntastic_html_checkers = ['tidy']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_python_checkers=['py3kwarn', 'flake8']
+let g:syntastic_python_checkers=['py3kwarn', 'flake8']
+
