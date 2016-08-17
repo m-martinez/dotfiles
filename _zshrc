@@ -148,6 +148,10 @@ function make_prompt {
 
   local virtualenv_info='$(virtualenv_prompt_info)'
 
+  if [[ "$DOCKER_MACHINE_NAME" != "" ]]; then
+    local docker_env="🐳 $DOCKER_MACHINE_NAME🐳 "
+  fi
+
   # Prompt format: \n # USER at MACHINE in [VIRTUALENV] DIRECTORY on git:BRANCH STATE [TIME] \n $
   PROMPT="\
 %{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
@@ -156,6 +160,7 @@ function make_prompt {
 %{$fg[green]%}$(box_name)\
 %{$fg[white]%}:\
 ${virtualenv_info}\
+${docker_env}\
 %{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
 ${git_info} \
 %{$fg[white]%}[%*] \
