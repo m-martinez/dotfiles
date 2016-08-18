@@ -135,6 +135,16 @@ function box_name {
     [ -f ~/.box-name ] && cat ~/.box-name || hostname
 }
 
+# Current docker machine info
+# (needs to be a callable so that it can be generated each time)
+function docker_prompt_info {
+  if [ "$DOCKER_MACHINE_NAME" != "" ]; then
+    echo "🐳  $DOCKER_MACHINE_NAME🐳 "
+  else
+    echo ""
+  fi
+}
+
 function make_prompt {
   # Directory info.
   local current_dir='${PWD/#$HOME/~}'
@@ -147,10 +157,7 @@ function make_prompt {
   ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}o"
 
   local virtualenv_info='$(virtualenv_prompt_info)'
-
-  if [[ "$DOCKER_MACHINE_NAME" != "" ]]; then
-    local docker_env="🐳 $DOCKER_MACHINE_NAME🐳 "
-  fi
+  local docker_info='$(docker_prompt_info)'
 
   # Prompt format: \n # USER at MACHINE in [VIRTUALENV] DIRECTORY on git:BRANCH STATE [TIME] \n $
   PROMPT="\
@@ -160,7 +167,7 @@ function make_prompt {
 %{$fg[green]%}$(box_name)\
 %{$fg[white]%}:\
 ${virtualenv_info}\
-${docker_env}\
+${docker_info}\
 %{$terminfo[bold]$fg[yellow]%}${current_dir}%{$reset_color%}\
 ${git_info} \
 %{$fg[white]%}[%*] \
