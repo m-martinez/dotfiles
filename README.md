@@ -1,12 +1,17 @@
-# dotfiles
-Location for configuration files I use in one easy-to-find location.
-
+A collection of common shell configurations that I use across systems.
 
 ## System Requirements
 
-These must all be installed-updated with the system's package manager (e.g. brew, yum, apt-get...)
-
 * git
+* python
 * tmux
+* vim
 * zsh
 
+## Installation
+
+> git clone https://github.com/m-martinez/dotfiles ~/.dotfiles
+
+Note: The usage of the dot in the check-ed out repository
+
+> ~/.dotfiles/install.sh

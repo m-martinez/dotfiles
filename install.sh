@@ -1,53 +1,33 @@
 #!/usr/bin/env bash
 
 #
-# install.sh
-# Automagically sets up dot files
-#
-
-# Get the directory location of this script
-HERE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-#
-# GIT CONFIG
+# Installs third-party shell/vim plugins and links common dotfiles
 #
 
 echo "==> Configuring git"
-
 git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 git config --global color.ui auto
+git config --global user.name "Marco Martinez"
+git config --global user.email "m-martinez@users.noreply.github.com"
 
-echo "Done configuring git. If you will be managing git projects, remember to run the following commands:"
-echo
-echo "    git config --global user.name <YOUR FULLNAME>"
-echo "    git config --global user.email <YOUR EMAIL>"
+echo "==> Installing Third-Party Plugins"
+# ZSHELL enhancement suite
+rm -rf ~/.oh-my-zsh
+git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
-#
-# GIT MODULES
-#
-
-echo "==> Updating git submodules"
-git submodule update --init --recursive
-
-#
-# LIMIT ACCESS
-#
-
-chmod 700 $HERE   # make sure the dotfiles are only rwx by the owner
-chmod 700 $HOME   # make sure my home dir is secured
-
-#
-# LINK DOT FILES
-#
+# VIM plugin manager
+mkdir -p ~/.vim/bundle
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim -u ~/.dotfiles/bundles.vim +PluginInstall +qall
 
 echo "==> Linking dot files"
-for DOTFILE in $HERE/_*; do
+for DOTFILE in ~/.dotfiles/_*; do
   DEST="$HOME/.${DOTFILE##*/_}"
   if [ -e "$DEST" -a ! -L "$DEST" ]; then
-		echo "Deleting '$DEST' so we can use ours"
+		echo -e "\tDeleting '$DEST' so we can use ours"
     rm -f "$DEST"
 	fi
-  echo "Linking: $DOTFILE -> $DEST"
+  echo -e "\tLinking: $DOTFILE -> $DEST"
   ln -sfn $DOTFILE $DEST
 done
 
