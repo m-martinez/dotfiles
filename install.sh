@@ -51,49 +51,5 @@ for DOTFILE in $HERE/_*; do
   ln -sfn $DOTFILE $DEST
 done
 
-#
-# BUILDOUT
-#
-
-BUILDOUTDIRS=(
-  "$HOME/.buildout"
-  "$HOME/.buildout/eggs"
-  "$HOME/.buildout/downloads"
-  "$HOME/.buildout/zope"
-  "$HOME/.buildout/extends"
-)
-
-echo "==> Creating untracked dot directories"
-for DOTDIR in "${BUILDOUTDIRS[@]}"; do
-  # if the directory doesn't exist, let's create it
-  if [[ ! -d "$DOTDIR" ]] && [[ ! -a "$DOTDIR" ]]; then
-    mkdir -p "$DOTDIR" && echo "created a $DOTDIR directory"
-    chmod 700 "$DOTDIR"
-  elif [[ ! -d "$DOTDIR" ]] && [[ -a "$DOTDIR" ]]; then
-    echo "something in the way of $DOTDIR being created"
-  fi
-done
-
-echo "==> Setting up buildout files"
-BUILDOUT_DIR="$HOME/.buildout"
-if [[ -d "$BUILDOUT_DIR" ]] && [ ! -e "$BUILDOUT_DIR/default.cfg" ]; then
-  # create the default.cfg file
-  cat > $BUILDOUT_DIR/default.cfg <<EOF
-[buildout]
-eggs-directory = $HOME/.buildout/eggs
-download-cache = $HOME/.buildout/downloads
-zope-directory = $HOME/.buildout/zope
-extends-cache = $HOME/.buildout/extends
-
-[instance]
-event-log-level = debug
-EOF
-  echo "Created default.cfg at: $BUILDOUT_DIR"
-fi
-
-#
-# ZSHELL
-#
-
 echo "==> Loading zshell configuration"
 source ~/.zshrc
