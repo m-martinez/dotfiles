@@ -54,6 +54,10 @@ export EDITOR=vim
 
 export PIP_REQUIRE_VIRTUALENV=true
 export PIP_RESPECT_VIRTUALENV=true
+export VIRTUALENVWRAPPER_PYTHON=$(which python3.5)
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
 
 VIRTUALENVWRAPPER=$(which virtualenvwrapper.sh)
 if [[ -e $VIRTUALENVWRAPPER ]]; then
