@@ -139,7 +139,7 @@ function box_name {
 # (needs to be a callable so that it can be generated each time)
 function docker_prompt_info {
   if [ "$DOCKER_MACHINE_NAME" != "" ]; then
-    echo "🐳  $DOCKER_MACHINE_NAME🐳 "
+    echo "🐳 $DOCKER_MACHINE_NAME🐳 "
   else
     echo ""
   fi
