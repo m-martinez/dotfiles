@@ -10,8 +10,10 @@ A collection of common shell configurations that I use across systems.
 
 ## Installation
 
+**Note: The usage of "." in front of the checked out project**
+```
 > git clone https://github.com/m-martinez/dotfiles ~/.dotfiles
-
-Note: The usage of the dot in the check-ed out repository
-
 > ~/.dotfiles/install.sh
+```
+
+
