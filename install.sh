@@ -16,6 +16,7 @@ rm -rf ~/.oh-my-zsh
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
 # VIM plugin manager
+rm -rf ~/.vim
 mkdir -p ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim -u ~/.dotfiles/bundles.vim +PluginInstall +qall
