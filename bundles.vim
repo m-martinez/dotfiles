@@ -28,20 +28,6 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 "Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'vim-scripts/VST'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'vim-scripts/mako.vim'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'jpalardy/vim-slime'
-Plugin 'groenewege/vim-less'
-Plugin 'scrooloose/syntastic'
-Plugin 'godlygeek/tabular'
-Plugin 'elzr/vim-json'
-Plugin 'isRuslan/vim-es6'
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -54,6 +40,28 @@ Plugin 'isRuslan/vim-es6'
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 "Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" Editor-like functionality
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'jpalardy/vim-slime'
+Plugin 'godlygeek/tabular'
+
+" Syntax checking
+Plugin 'scrooloose/syntastic'
+
+" Syntax highlighting
+Plugin 'groenewege/vim-less'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'vim-scripts/mako.vim'
+Plugin 'elzr/vim-json'
+Plugin 'isRuslan/vim-es6'
+Plugin 'mxw/vim-jsx'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'vim-scripts/VST'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
