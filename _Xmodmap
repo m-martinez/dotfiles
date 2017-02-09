@@ -1,1 +1,8 @@
+!
+! X11 mouse/keyboard configurations
+!
+! This file is only really necessary on Linux-based systems
+!
+
+! Switch to macOS-style scrolling (i.e like flying a plane)
 pointer = 1 2 3 5 4 6 7 8 9 10 11 12

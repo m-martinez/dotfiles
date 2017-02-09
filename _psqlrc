@@ -1,1 +1,12 @@
+--
+-- PostgreSQL client shell configurations
+--
+
+-- Disable the pager and just output everything to screen
 \pset pager off
+
+-- Show how long each query takes to execute
+\timing
+
+-- Use best available output format
+\x auto

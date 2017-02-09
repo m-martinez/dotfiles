@@ -1,5 +1,9 @@
+"
+" VIM configurations
+"
 " Parts of this file taken from: http://amix.dk/vim/vimrc.html
 " Additional color schemes from: http://www.vim.org/scripts/script.php?script_id=625
+"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle

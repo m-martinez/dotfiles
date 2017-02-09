@@ -1,3 +1,7 @@
+#
+# ZShell configurations
+#
+
 # System OS
 UNAME=$(uname)
 
