@@ -11,6 +11,14 @@ git config --global user.name "Marco Martinez"
 git config --global user.email "m-martinez@users.noreply.github.com"
 git config --global push.default simple
 
+cat <<EOF
+
+    Don't forget to run:
+
+    git config --global user.signingkey GPGKEYID
+
+EOF
+
 echo "==> Installing Third-Party Plugins"
 # ZSHELL enhancement suite
 rm -rf ~/.oh-my-zsh
