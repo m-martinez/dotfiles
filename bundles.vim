@@ -52,6 +52,7 @@ Plugin 'godlygeek/tabular'
 
 " Syntax checking
 Plugin 'scrooloose/syntastic'
+Plugin 'editorconfig/editorconfig-vim'
 
 " Syntax highlighting
 Plugin 'groenewege/vim-less'
