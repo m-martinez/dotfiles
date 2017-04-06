@@ -5,11 +5,16 @@
 #
 
 echo "==> Configuring git"
-git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 git config --global color.ui auto
 git config --global user.name "Marco Martinez"
 git config --global user.email "m-martinez@users.noreply.github.com"
 git config --global push.default simple
+git.config --global push.followTags true
+git config --global alias.glog "log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(bold blue)<%an>%C(reset)'"
+git config --global alias.prune "fetch --prune"
+git config --global alias.undo "reset --soft HEAD^"
+git config --global alias.stash-all "stash save --include-untracked"
+
 
 cat <<EOF
 
