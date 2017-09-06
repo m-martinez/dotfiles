@@ -63,6 +63,7 @@ Plugin 'isRuslan/vim-es6'
 Plugin 'mxw/vim-jsx'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'vim-scripts/VST'
+Plugin 'exu/pgsql.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
