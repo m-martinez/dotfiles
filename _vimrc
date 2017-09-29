@@ -15,7 +15,7 @@ source ~/.dotfiles/bundles.vim
 " => NERDTree preferences
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let NERDTreeIgnore=['\.o$', '\~$', '\.egg-info$', '\.pyc$', 'develop-eggs$', 'parts$', '__pycache__$', '\.DS_Store$', '\.git$']
+let NERDTreeIgnore=['\.o$', '\~$', '\.egg-info$', '\.pyc$', 'develop-eggs$', 'parts$', '__pycache__$', '\.DS_Store$', '\.git$', '\.class$']
 
 " do not show hidden files by default
 let NERDTreeShowHidden=1
