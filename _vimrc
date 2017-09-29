@@ -61,9 +61,6 @@ autocmd FileType python setlocal shiftwidth=4 tabstop=4
 set conceallevel=0
 let g:vim_json_syntax_conceal=0
 
-" Strip  whitespace
-autocmd BufWritePre * :%s/\s\+$//e
-
 let mapleader = ","
 
 " Set 7 lines to the curors - when moving vertical..

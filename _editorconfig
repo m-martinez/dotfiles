@@ -1,0 +1,15 @@
+#
+# Global Preferred Editor settings.
+# Can be overriden by local project .editorconfig
+#
+# More info:
+# http://editorconfig.org
+#
+
+[*]
+indent_size = 2
+trim_trailing_whitespace = true
+indent_style = space
+
+[*.py]
+indent_size = 4
