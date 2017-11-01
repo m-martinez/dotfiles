@@ -157,6 +157,9 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 
 let g:syntastic_html_checkers = ['tidy']
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
+" Set local variable to the closest upwards node_modules
+" Using 'g:' did not work because syntastic uses pwd of the opened directory
+" that contains multiple sub-packages with their own eslintrc requirements
+autocmd FileType javascript let b:syntastic_javascript_eslint_exec=finddir('node_modules', '.;') . '/.bin/eslint'
 let g:syntastic_python_checkers=['py3kwarn', 'flake8']
 let g:sql_type_default = 'pgsql'
