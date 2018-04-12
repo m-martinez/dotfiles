@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+#
+# Prunes old tracking branchs and removes any local branches that have been merged
+#
+# Before removing branches, it will prompt with an editable list so that some can be
+# omitted.
+#
+# Excludes master branch
+#
+
+set -E
+
+git remote prune origin
+
+git branch --merged | grep -v "master" >/tmp/merged-branches && \
+  vi /tmp/merged-branches && \
+  xargs git branch -d </tmp/merged-branches

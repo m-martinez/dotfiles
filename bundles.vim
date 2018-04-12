@@ -44,6 +44,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Editor-like functionality
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-abolish'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'nanotech/jellybeans.vim'

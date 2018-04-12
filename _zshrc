@@ -71,8 +71,8 @@ export NODE_PATH="/usr/lib/node_modules"
 
 # update the path before firing-up OMZ
 # add local bin to the path if not already there
-if [[ "$PATH" != *"$HOME/bin"* ]]; then
-  export PATH=$PATH:$HOME/bin
+if [[ "$PATH" != *"$HOME/.bin"* ]]; then
+  export PATH=$PATH:$HOME/.bin
 fi
 
 # Postgres 9.5 installed on CentOS

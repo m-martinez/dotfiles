@@ -15,11 +15,20 @@ source ~/.dotfiles/bundles.vim
 " => NERDTree preferences
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let NERDTreeIgnore=['\.o$', '\~$', '\.egg-info$', '\.pyc$', 'develop-eggs$', 'parts$', '__pycache__$', '\.DS_Store$', '\.git$', '\.class$']
+let NERDTreeIgnore=['\.o$', '\~$', '\.egg-info$', '\.pyc$', 'develop-eggs$', 'parts$', '__pycache__$', '\.DS_Store$', '\.git$', '\.class$', 'node_modules$']
 
 " do not show hidden files by default
 let NERDTreeShowHidden=1
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => NERDCommenter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Taglist preferences
@@ -101,6 +110,9 @@ set tm=500
 " Wrapping
 set textwidth=0
 set wrapmargin=0
+
+" Permanently disable 'ex' mode, it has casued more tragedies than saved
+map Q <Nop>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
