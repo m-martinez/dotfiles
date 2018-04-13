@@ -29,12 +29,6 @@ echo "==> Installing Third-Party Plugins"
 rm -rf ~/.oh-my-zsh
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
-# VIM plugin manager
-rm -rf ~/.vim
-mkdir -p ~/.vim/bundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim -u ~/.dotfiles/bundles.vim +PluginInstall +qall
-
 echo "==> Linking dot files"
 for DOTFILE in ~/.dotfiles/_*; do
   DEST="$HOME/.${DOTFILE##*/_}"
@@ -48,3 +42,19 @@ done
 
 echo "==> Loading zshell configuration"
 source ~/.zshrc
+
+echo "==> Linking XDG config files"
+for CONFIG in ~/.dotfiles/config/*; do
+  DEST=~/.config/${CONFIG##*/}
+  if [ -e "$DEST" -a ! -L "$DEST" ]; then
+		echo -e "\tDeleting '$DEST' so we can use ours"
+    rm -f "$DEST"
+	fi
+  echo -e "\tLinking: $CONFIG -> $DEST"
+  ln -sfn $CONFIG $DEST
+done
+
+# VIM plugin manager
+mkdir -p ~/.local/share/nvim/bundle
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.local/share/nvim/bundle/Vundle.vim
+$EDITOR -u ~/.config/nvim/bundles.vim +PluginInstall +qall

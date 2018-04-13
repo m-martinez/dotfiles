@@ -27,15 +27,10 @@ DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git git-extras vi-mode pip tmux virtualenv)
 
-# Use ssh-agent of Linux distributes (OSX uses built-in keychain)
-# Note: ensure that there are no other ssh-agent processes running:
-# ps -e  | grep [s]sh-agent
-if [[ "$HOSTNAME" == 'diddykong' ]]; then
-  plugins+=(ssh-agent gpg-agent)
-  zstyle :omz:plugins:ssh-agent identities git_rsa ssh_rsa beast
-fi
-
 source $ZSH/oh-my-zsh.sh
+
+alias vim="nvim"
+alias vi="nvim"
 
 # Show a pretty graph of commit history
 alias git-graph="git log --pretty=oneline --abbrev-commit --graph --decorate --all"
@@ -54,7 +49,8 @@ fi
 export COPYFILE_DISABLE=1
 
 # Ensure vim is the default editor
-export EDITOR=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
 export PIP_REQUIRE_VIRTUALENV=true
 export PIP_RESPECT_VIRTUALENV=true
