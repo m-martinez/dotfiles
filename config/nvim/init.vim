@@ -98,8 +98,8 @@ let g:neomake_python_flake8_exe = '/usr/local/bin/flake8'
 " => NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" auto start NERDTree
-autocmd VimEnter * NERDTree
+" auto start NERDTree (except when editing commit message)
+autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | endif
 
 let NERDTreeIgnore=['\.o$', '\~$', '\.egg-info$', '\.pyc$', 'develop-eggs$', 'parts$', '__pycache__$', '\.DS_Store$', '\.git$', '\.class$', 'node_modules$']
 "let NERDTreeShowHidden=1 " show hidden files by default
