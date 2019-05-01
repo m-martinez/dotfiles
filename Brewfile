@@ -1,0 +1,12 @@
+tap "caskroom/cask"
+tap "homebrew/bundle"
+tap "homebrew/core"
+brew "python"
+brew "httpie"
+brew "jq"
+brew "neovim"
+brew "node@10", link: true
+brew "tmux"
+brew "wget"
+brew "yarn"
+brew "zsh"
