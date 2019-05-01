@@ -45,6 +45,9 @@ if hash npm 2>/dev/null; then
   export PATH="node_modules/.bin:$PATH"
 fi
 
+# include php composer binaries
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+
 # turn off special handling of ._* files in tar, etc.
 export COPYFILE_DISABLE=1
 
@@ -52,13 +55,14 @@ export COPYFILE_DISABLE=1
 export EDITOR=nvim
 export VISUAL=nvim
 
-export PIP_REQUIRE_VIRTUALENV=true
-export PIP_RESPECT_VIRTUALENV=true
+# Prefer Python3
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="$HOME/.poetry/bin:$PATH"
 
 VIRTUALENVWRAPPER=$(which virtualenvwrapper.sh)
 if [[ -e $VIRTUALENVWRAPPER ]]; then
   export WORKON_HOME=$HOME/.virtualenvs
-  export VIRTUALENVWRAPPER_PYTHON=$(which python3.6)
+  export VIRTUALENVWRAPPER_PYTHON=$(which python3)
   source "$VIRTUALENVWRAPPER"
   function CURRENT_PROJECT { basename "$VIRTUAL_ENV" | cut -d '-' -f 2- }
 fi
