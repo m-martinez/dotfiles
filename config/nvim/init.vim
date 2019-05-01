@@ -32,6 +32,9 @@ set smartindent
 set tabstop=2
 set shiftwidth=2
 
+" Use system clipboard (on MacOS)
+set clipboard=unnamed
+
 " python doesn't use brackets, so smart indent is pointless
 " also make the indentations wider so we can see
 autocmd! FileType python set nosmartindent
@@ -89,6 +92,7 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 " Set local variable to the closest upwards node_modules
 " Using 'g:' did not work because syntastic uses pwd of the opened directory
 " that contains multiple sub-packages with their own eslintrc requirements
+autocmd FileType typescript let b:neomake_javascript_eslint_exe=$PWD . '/' . finddir('node_modules', '.;') . '/.bin/eslint'
 autocmd FileType javascript let b:neomake_javascript_eslint_exe=$PWD . '/' . finddir('node_modules', '.;') . '/.bin/eslint'
 let g:neomake_python_checkers=['flake8']
 let g:neomake_python_python_exe = '/usr/local/bin/python3'
