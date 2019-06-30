@@ -4,6 +4,14 @@
 # Installs third-party shell/vim plugins and links common dotfiles
 #
 
+HERE=$(dirname "$0")
+
+if command -v brew >/dev/null 2>&1; then
+  brew bundle
+fi
+
+exit
+
 echo "==> Configuring git"
 git config --global color.ui auto
 git config --global user.name "Marco Martinez"
