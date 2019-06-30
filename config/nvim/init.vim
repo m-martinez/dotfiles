@@ -39,6 +39,8 @@ set clipboard=unnamed
 " also make the indentations wider so we can see
 autocmd! FileType python set nosmartindent
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
+" Don't try to align with the open parenthesis
+let g:pyindent_open_paren = 4
 
 autocmd BufNewFile,BufRead *.zcml set filetype=xml
 autocmd BufNewFile,BufRead *.pt set filetype=html
