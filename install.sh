@@ -52,6 +52,7 @@ echo "==> Loading zshell configuration"
 source ~/.zshrc
 
 echo "==> Linking XDG config files"
+mkdir -p ~/.config/
 for CONFIG in ~/.dotfiles/config/*; do
   DEST=~/.config/${CONFIG##*/}
   if [ -e "$DEST" -a ! -L "$DEST" ]; then

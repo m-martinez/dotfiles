@@ -43,6 +43,7 @@ alias fix-terminal="stty sane"
 # always prefer local npm (only alias if npm is actually installed)
 if hash npm 2>/dev/null; then
   export PATH="node_modules/.bin:$PATH"
+
 fi
 
 # include php composer binaries
@@ -124,6 +125,8 @@ export LS_COLORS=''
 if [[ -n "$DISPLAY" && "$TERM" == "xterm" ]]; then
   export TERM=xterm-256color
 fi
+
+source $HOME/.zshrc-untracked/*.sh
 
 # THEME BASED ON YS to add virtualenv info
 # Clean, simple, compatible and meaningful.

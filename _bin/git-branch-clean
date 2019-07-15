@@ -9,10 +9,11 @@
 # Excludes master branch
 #
 
-set -E
+set -e
 
-git remote prune origin
+git fetch -p
 
-git branch --merged | grep -v "master" >/tmp/merged-branches && \
+# Ignore current branch and common git flow naming patterns
+git branch --merged | grep -v -e "^\*" -e "master" -e "develop" >/tmp/merged-branches && \
   vi /tmp/merged-branches && \
   xargs git branch -d </tmp/merged-branches
