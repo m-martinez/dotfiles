@@ -34,6 +34,7 @@ Plugin 'vim-scripts/taglist.vim'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'jpalardy/vim-slime'
 Plugin 'godlygeek/tabular'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " Syntax checking
 Plugin 'editorconfig/editorconfig-vim'
