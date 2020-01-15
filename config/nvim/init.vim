@@ -53,16 +53,20 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 syntax enable
 
-set t_Co=256
-
 set shell=/bin/zsh
 
 if has("gui_running")
   set gfn=Inconsolata:h14
 endif
 
+set t_Co=256
+set t_ut=
 set background=dark
-colorscheme jellybeans
+if &diff
+  colorscheme jellybeans
+else
+  colorscheme codedark
+endif
 
 set encoding=utf8
 try
@@ -91,21 +95,27 @@ call neomake#configure#automake('w')
 
 let g:neomake_html_enabled_makers = ['tidy']
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_typescript_enabled_makers = ['tslint']
 " Set local variable to the closest upwards node_modules
 " Using 'g:' did not work because syntastic uses pwd of the opened directory
 " that contains multiple sub-packages with their own eslintrc requirements
-autocmd FileType typescript let b:neomake_javascript_eslint_exe=$PWD . '/' . finddir('node_modules', '.;') . '/.bin/eslint'
-autocmd FileType javascript let b:neomake_javascript_eslint_exe=$PWD . '/' . finddir('node_modules', '.;') . '/.bin/eslint'
-let g:neomake_python_checkers=['flake8']
-let g:neomake_python_python_exe = '/usr/local/bin/python3'
-let g:neomake_python_flake8_exe = '/usr/local/bin/flake8'
+let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
+let g:neomake_typescript_tslint_exe = $PWD .'/node_modules/.bin/tslint'
+"autocmd FileType typescript let b:neomake_javascript_eslint_exe=$PWD . '/' . finddir('node_modules', '.;') . '/.bin/eslint'
+"autocmd FileType javascript let b:neomake_javascript_eslint_exe=$PWD . '/' . finddir('node_modules', '.;') . '/.bin/eslint'
+let g:neomake_python_checkers=['flake8', 'mypy']
+"let g:neomake_python_python_exe = '/usr/local/bin/python3'
+let g:neomake_python_flake8_exe = 'poetry run flake8'
+"let g:neomake_python_mypy_exe = 'poetry run mypy .'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " auto start NERDTree (except when editing commit message)
-autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTree | endif
+if &filetype !=# 'gitcommit' && !&diff
+  autocmd VimEnter * NERDTree
+endif
 
 let NERDTreeIgnore=['\.o$', '\~$', '\.egg-info$', '\.pyc$', 'develop-eggs$', 'parts$', '__pycache__$', '\.DS_Store$', '\.git$', '\.class$', 'node_modules$']
 let NERDTreeShowHidden=1 " show hidden files by default
@@ -139,6 +149,8 @@ vmap <Leader>a: :Tabularize /:\zs<CR>
 
 if executable('rg')
   set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_user_command = 'rg %s --files --color=never --smart-case'
   let g:ctrlp_use_caching = 0
+  let g:ctrlp_regexp = 1
 endif
+set wildignore+=*/.git/*,*/tmp/*,*.swp

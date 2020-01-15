@@ -25,13 +25,16 @@ Plugin 'VundleVim/Vundle.vim'
 " Run asynchronous programs (e.g. linting, syntax checking)
 Plugin 'neomake/neomake'
 
+" Themes
+Plugin 'tomasiser/vim-code-dark'
+Plugin 'nanotech/jellybeans.vim'
+
 " Editor-like functionality
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/taglist.vim'
-Plugin 'nanotech/jellybeans.vim'
 Plugin 'jpalardy/vim-slime'
 Plugin 'godlygeek/tabular'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -40,17 +43,30 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'editorconfig/editorconfig-vim'
 
 " Syntax highlighting
+" CSS
 Plugin 'groenewege/vim-less'
 Plugin 'cakebaker/scss-syntax.vim'
+
+" Python
 Plugin 'vim-scripts/mako.vim'
+Plugin 'vim-scripts/VST'
+
+" Javascript
 Plugin 'elzr/vim-json'
 Plugin 'pangloss/vim-javascript'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'mxw/vim-jsx'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'vim-scripts/VST'
+
+" Databases
 Plugin 'exu/pgsql.vim'
+
+" Scala
+Plugin 'derekwyatt/vim-scala'
+
+" PHP
+Plugin 'StanAngeloff/php.vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

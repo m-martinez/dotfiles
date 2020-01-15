@@ -29,8 +29,21 @@ plugins=(git git-extras vi-mode pip tmux virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
+# Homebrew
+export PATH="/usr/local/sbin:$PATH"
+
 alias vim="nvim"
 alias vi="nvim"
+
+export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
 
 # Show a pretty graph of commit history
 alias git-graph="git log --pretty=oneline --abbrev-commit --graph --decorate --all"
