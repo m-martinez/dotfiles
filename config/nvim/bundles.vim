@@ -56,6 +56,7 @@ Plugin 'elzr/vim-json'
 Plugin 'pangloss/vim-javascript'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'peitalin/vim-jsx-typescript'
+Plugin 'jparise/vim-graphql'
 Plugin 'mxw/vim-jsx'
 
 " Databases

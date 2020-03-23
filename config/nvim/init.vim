@@ -35,9 +35,9 @@ set shiftwidth=2
 " Use system clipboard (on MacOS)
 set clipboard=unnamed
 
-" python doesn't use brackets, so smart indent is pointless
-" also make the indentations wider so we can see
-autocmd! FileType python set nosmartindent
+" this is more annoying than helpful
+set nosmartindent
+
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
 " Don't try to align with the open parenthesis
 let g:pyindent_open_paren = 4
@@ -46,6 +46,7 @@ autocmd BufNewFile,BufRead *.zcml set filetype=xml
 autocmd BufNewFile,BufRead *.pt set filetype=html
 autocmd BufNewFile,BufRead *.mako set filetype=mako
 autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.mjs set filetype=javascript
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
