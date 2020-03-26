@@ -42,6 +42,8 @@ brew "postgresql"
 brew "ripgrep"
 # Terminal multiplexer
 brew "tmux"
+# Manage complex tmux sessions easily
+brew "tmuxinator"
 # Internet file retriever
 brew "wget"
 # UNIX shell (command interpreter)
