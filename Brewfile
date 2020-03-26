@@ -9,6 +9,8 @@ brew "ack"
 brew "awscli"
 # Vector graphics library with cross-device output support
 brew "cairo"
+# Reimplementation of ctags(1)
+brew "ctags"
 # Convert text between DOS, UNIX, and Mac formats
 brew "dos2unix"
 # Collection of GNU find, xargs, and locate

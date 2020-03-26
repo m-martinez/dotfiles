@@ -45,6 +45,8 @@ if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
+alias ctags="`brew --prefix`/bin/ctags"
+
 # Show a pretty graph of commit history
 alias git-graph="git log --pretty=oneline --abbrev-commit --graph --decorate --all"
 
