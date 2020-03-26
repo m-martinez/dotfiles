@@ -151,7 +151,9 @@ function docker-memory() {
   docker stats --no-stream --format 'table {{.MemUsage}}' | sed 's/[A-Za-z]*//g' | awk '{sum += $1} END {print sum "MB"}'
 }
 
-source $HOME/.zshrc-untracked/*.sh
+if [ "$(ls -A $HOME/.zshrc-untracked)" ]; then
+    source $HOME/.zshrc-untracked/*.sh;
+fi
 
 # THEME BASED ON YS to add virtualenv info
 # Clean, simple, compatible and meaningful.
