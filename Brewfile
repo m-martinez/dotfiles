@@ -1,5 +1,4 @@
 tap "adoptopenjdk/openjdk"
-tap "caskroom/cask"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
@@ -7,20 +6,20 @@ tap "homebrew/core"
 tap "homebrew/services"
 # Search tool like grep, but optimized for programmers
 brew "ack"
-# Interpreted, interactive, object-oriented programming language
-brew "python"
 # Official Amazon AWS command-line interface
 brew "awscli"
+# Interpreted, interactive, object-oriented programming language
+brew "python"
 # Vector graphics library with cross-device output support
 brew "cairo"
 # Reimplementation of ctags(1)
 brew "ctags"
 # Convert text between DOS, UNIX, and Mac formats
 brew "dos2unix"
-# Collection of GNU find, xargs, and locate
-brew "findutils"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
+# Collection of GNU find, xargs, and locate
+brew "findutils"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Lightweight and flexible command-line JSON processor
