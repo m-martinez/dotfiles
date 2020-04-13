@@ -6,10 +6,10 @@ tap "homebrew/core"
 tap "homebrew/services"
 # Search tool like grep, but optimized for programmers
 brew "ack"
+# Command-line interface for SQLite
+brew "sqlite"
 # Official Amazon AWS command-line interface
 brew "awscli"
-# Interpreted, interactive, object-oriented programming language
-brew "python"
 # Vector graphics library with cross-device output support
 brew "cairo"
 # Reimplementation of ctags(1)
@@ -20,6 +20,8 @@ brew "dos2unix"
 brew "exiftool"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
+# Interpreted, interactive, object-oriented programming language
+brew "python"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Lightweight and flexible command-line JSON processor
