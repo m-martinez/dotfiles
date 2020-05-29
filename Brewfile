@@ -20,8 +20,6 @@ brew "dos2unix"
 brew "exiftool"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
-# Interpreted, interactive, object-oriented programming language
-brew "python"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Lightweight and flexible command-line JSON processor
@@ -34,6 +32,8 @@ brew "neovim"
 brew "netcat"
 # Manage multiple Node.js versions
 brew "nvm"
+# Interpreted, interactive, object-oriented programming language
+brew "python"
 # Framework for layout and rendering of i18n text
 brew "pango"
 # General-purpose scripting language
@@ -42,10 +42,14 @@ brew "php"
 brew "postgresql"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Tool to build, change, and version infrastructure
+brew "terraform"
 # Terminal multiplexer
 brew "tmux"
 # Manage complex tmux sessions easily
 brew "tmuxinator"
+# Truncates a file to a given size
+brew "truncate"
 # Internet file retriever
 brew "wget"
 # UNIX shell (command interpreter)
