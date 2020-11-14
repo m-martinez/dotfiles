@@ -75,14 +75,6 @@ export VISUAL=nvim
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
 
-VIRTUALENVWRAPPER=$(which virtualenvwrapper.sh)
-if [[ -e $VIRTUALENVWRAPPER ]]; then
-  export WORKON_HOME=$HOME/.virtualenvs
-  export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-  source "$VIRTUALENVWRAPPER"
-  function CURRENT_PROJECT { basename "$VIRTUAL_ENV" | cut -d '-' -f 2- }
-fi
-
 export NODE_PATH="/usr/lib/node_modules"
 
 # update the path before firing-up OMZ
@@ -90,21 +82,6 @@ export NODE_PATH="/usr/lib/node_modules"
 if [[ "$PATH" != *"$HOME/.bin"* ]]; then
   export PATH=$PATH:$HOME/.bin
 fi
-
-# Postgres 9.5 installed on CentOS
-if [[ -d "/usr/pgsql-9.5/bin/" ]]; then
-  export PATH="/usr/pgsql-9.5/bin/:$PATH"
-fi
-
-# Add android developer tools if available (unbuntu desktop)
-if [[ -d "$HOME/Tools/adt" ]]; then
-  export ANDROID_HOME=$HOME/Tools/adt/sdk
-  export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-elif [[ -d "/usr/local/Cellar/android-sdk" ]]; then
-  # TODO: will have to somehow calculate this if it ever changes...
-  export ANDROID_HOME="/usr/local/Cellar/android-sdk/r21"
-fi
-
 
 #allow tab completion in the middle of a word
 setopt COMPLETE_IN_WORD
