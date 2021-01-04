@@ -29,6 +29,13 @@ plugins=(git git-extras vi-mode pip tmux virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
+### Custom
+
+#
+# Alias Homebrew becuase pyenv create additinal *-config files that confuse brew
+# https://github.com/pyenv/pyenv/issues/106
+alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'
+
 # Homebrew
 export PATH="/usr/local/sbin:$PATH"
 
@@ -72,8 +79,13 @@ export EDITOR=nvim
 export VISUAL=nvim
 
 # Prefer Python3
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
 VIRTUALENVWRAPPER=$(which virtualenvwrapper.sh)
 if [[ -e $VIRTUALENVWRAPPER ]]; then

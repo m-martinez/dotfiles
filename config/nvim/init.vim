@@ -104,10 +104,10 @@ let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
 let g:neomake_typescript_tslint_exe = $PWD .'/node_modules/.bin/tslint'
 "autocmd FileType typescript let b:neomake_javascript_eslint_exe=$PWD . '/' . finddir('node_modules', '.;') . '/.bin/eslint'
 "autocmd FileType javascript let b:neomake_javascript_eslint_exe=$PWD . '/' . finddir('node_modules', '.;') . '/.bin/eslint'
+
+" Activate virtual env for project to make this work
+"let g:neomake_python_python_exe = $PYENV_ROOT . '/shims/python'
 let g:neomake_python_checkers=['flake8', 'mypy']
-"let g:neomake_python_python_exe = '/usr/local/bin/python3'
-let g:neomake_python_flake8_exe = 'poetry run flake8'
-"let g:neomake_python_mypy_exe = 'poetry run mypy .'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NERDTree

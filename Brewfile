@@ -32,14 +32,14 @@ brew "neovim"
 brew "netcat"
 # Manage multiple Node.js versions
 brew "nvm"
-# Interpreted, interactive, object-oriented programming language
-brew "python"
 # Framework for layout and rendering of i18n text
 brew "pango"
 # General-purpose scripting language
 brew "php"
 # Object-relational database system
 brew "postgresql"
+# Python version management
+brew "pyenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Tool to build, change, and version infrastructure
