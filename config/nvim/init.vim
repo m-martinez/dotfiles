@@ -113,8 +113,8 @@ let g:neomake_python_checkers=['flake8', 'mypy']
 " => NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" auto start NERDTree (except when editing commit message)
-if &filetype !=# 'gitcommit' && !&diff
+" auto start NERDTree when vim is opened directly
+if &filetype == ''
   autocmd VimEnter * NERDTree
 endif
 

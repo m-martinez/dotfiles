@@ -2,6 +2,17 @@
 # ZShell configurations
 #
 
+### HomeBrew
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
+### Oh-My-Zsh
+
 # System OS
 UNAME=$(uname)
 
@@ -36,9 +47,16 @@ source $ZSH/oh-my-zsh.sh
 # https://github.com/pyenv/pyenv/issues/106
 alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'
 
+# Locale
+# MacOS does not set these and they are needed for neomake to work properly
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_CTYPE="en_US.UTF-8"
+
 # Homebrew
 export PATH="/usr/local/sbin:$PATH"
 
+# Neovim
 alias vim="nvim"
 alias vi="nvim"
 
@@ -101,11 +119,6 @@ export NODE_PATH="/usr/lib/node_modules"
 # add local bin to the path if not already there
 if [[ "$PATH" != *"$HOME/.bin"* ]]; then
   export PATH=$PATH:$HOME/.bin
-fi
-
-# Postgres 9.5 installed on CentOS
-if [[ -d "/usr/pgsql-9.5/bin/" ]]; then
-  export PATH="/usr/pgsql-9.5/bin/:$PATH"
 fi
 
 # Add android developer tools if available (unbuntu desktop)
@@ -235,3 +248,4 @@ ${virtualenv_info} \
 }
 
 make_prompt
+

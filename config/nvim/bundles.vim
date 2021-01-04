@@ -68,6 +68,9 @@ Plugin 'derekwyatt/vim-scala'
 " PHP
 Plugin 'StanAngeloff/php.vim'
 
+" Neo4j
+Plugin 'neo4j-contrib/cypher-vim-syntax'
+
 " Terraform
 Plugin 'hashivim/vim-terraform'
 
