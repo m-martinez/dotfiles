@@ -10,8 +10,6 @@ brew "ack"
 brew "sqlite"
 # Official Amazon AWS command-line interface
 brew "awscli"
-# Core application library for C
-brew "glib"
 # Reimplementation of ctags(1)
 brew "ctags"
 # Get a file from an HTTP, HTTPS or FTP server
@@ -22,18 +20,20 @@ brew "dive"
 brew "dos2unix"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
+# Libraries to talk to Microsoft SQL Server and Sybase databases
+brew "freetds"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Postgres C API library
-brew "libpq"
+# Network authentication protocol
+brew "krb5"
 # Apache Kafka C/C++ library
 brew "librdkafka"
-# Protocol buffers (Google's data interchange format)
-brew "protobuf"
 # Open source relational database management system
 brew "mysql"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -72,5 +72,5 @@ brew "volta"
 brew "wget"
 # UNIX shell (command interpreter)
 brew "zsh"
-cask "adoptopenjdk/openjdk/adoptopenjdk12"
+cask "adoptopenjdk12"
 cask "kap"
