@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-$EDITOR -u ~/.config/nvim/bundles.vim +PluginInstall +qall
+$EDITOR -u ~/.config/nvim/bundles.vim +PluginInstall! +qall

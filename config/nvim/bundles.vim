@@ -50,6 +50,8 @@ Plugin 'cakebaker/scss-syntax.vim'
 " Python
 Plugin 'vim-scripts/mako.vim'
 Plugin 'vim-scripts/VST'
+Plugin 'petobens/poet-v'
+Plugin 'cespare/vim-toml'
 
 " Javascript
 Plugin 'elzr/vim-json'

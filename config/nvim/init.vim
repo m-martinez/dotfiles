@@ -86,57 +86,60 @@ set conceallevel=0
 let g:vim_json_syntax_conceal=0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => NeoMake
+" => NeoMake - Used for asyncronously running linters
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Full config: when writing or reading a buffer, and on changes in insert and
 " normal mode (after 1s; no delay when writing).
-"call neomake#configure#automake('nrwi', 500)
 call neomake#configure#automake('w')
 
 let g:neomake_html_enabled_makers = ['tidy']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_typescript_enabled_makers = ['tslint']
 " Set local variable to the closest upwards node_modules
-" Using 'g:' did not work because syntastic uses pwd of the opened directory
-" that contains multiple sub-packages with their own eslintrc requirements
 let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
 let g:neomake_typescript_tslint_exe = $PWD .'/node_modules/.bin/tslint'
-"autocmd FileType typescript let b:neomake_javascript_eslint_exe=$PWD . '/' . finddir('node_modules', '.;') . '/.bin/eslint'
-"autocmd FileType javascript let b:neomake_javascript_eslint_exe=$PWD . '/' . finddir('node_modules', '.;') . '/.bin/eslint'
+
+" Setup a virtual environment specifically for neovim
+" see: https://neovim.io/doc/user/provider.html
+" see: https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim#using-virtual-environments
+let g:python3_host_prog = "~/.pyenv/versions/py3nvim/bin/python"
 
 " Activate virtual env for project to make this work
-"let g:neomake_python_python_exe = $PYENV_ROOT . '/shims/python'
 let g:neomake_python_checkers=['flake8', 'mypy']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => NERDTree
+" => Poetv - Allows dynamic setting of Poetry virtualenv
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" auto start NERDTree when vim is opened directly
-if &filetype == ''
-  autocmd VimEnter * NERDTree
-endif
+let g:poetv_auto_activate = 1
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => NERDTree - Directory listing
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let NERDTreeIgnore=['\.o$', '\~$', '\.egg-info$', '\.pyc$', 'develop-eggs$', 'parts$', '__pycache__$', '\.DS_Store$', '\.git$', '\.class$', 'node_modules$']
 let NERDTreeShowHidden=1 " show hidden files by default
 
+" auto start NERDTree when vim is started with no command line arguments
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => NERDCommenter
+" => NERDCommenter - Bulk commenter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:NERDDefaultAlign = 'left' " Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDSpaceDelims = 1       " Add spaces after comment delimiters by default
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM Slime
+" => VIM Slime - Output commands to another tmux panel
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:slime_target = "tmux"
 let g:slime_paste_file = tempname() " Using STDIN causes issues, unfortunately, so use a FILE
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Tabular
+" => Tabular - Aligns variable assignment visually
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 nmap <Leader>a= :Tabularize /=<CR>
@@ -145,7 +148,7 @@ nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ctrl-P
+" => Ctrl-P - Similar to Viscode's <cmd>-P to quickly lookup files
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if executable('rg')
