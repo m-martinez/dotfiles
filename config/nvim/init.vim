@@ -95,10 +95,9 @@ call neomake#configure#automake('w')
 
 let g:neomake_html_enabled_makers = ['tidy']
 let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_typescript_enabled_makers = ['tslint']
-" Set local variable to the closest upwards node_modules
 let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
-let g:neomake_typescript_tslint_exe = $PWD .'/node_modules/.bin/tslint'
+let g:neomake_typescript_enabled_makers = ['eslint']
+let g:neomake_typescript_tslint_exe = $PWD .'/node_modules/.bin/eslint'
 
 " Setup a virtual environment specifically for neovim
 " see: https://neovim.io/doc/user/provider.html
