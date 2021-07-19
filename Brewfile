@@ -1,4 +1,5 @@
 tap "adoptopenjdk/openjdk"
+tap "cleishm/neo4j"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
@@ -10,8 +11,10 @@ brew "ack"
 brew "sqlite"
 # Official Amazon AWS command-line interface
 brew "awscli"
-# Reimplementation of ctags(1)
-brew "ctags"
+# Freely available high-quality data compressor
+brew "bzip2"
+# Core application library for C
+brew "glib"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Tool for exploring each layer in a docker image
@@ -24,42 +27,24 @@ brew "exiftool"
 brew "ffmpeg"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
-# Libraries to talk to Microsoft SQL Server and Sybase databases
-brew "freetds"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Network authentication protocol
-brew "krb5"
-# Apache Kafka C/C++ library
-brew "librdkafka"
-# Open source relational database management system
-brew "mysql"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Utility for managing network connections
 brew "netcat"
-# Manage multiple Node.js versions
-brew "nvm"
-# General-purpose scripting language
-brew "php"
-# Object-relational database system
-brew "postgresql"
+# Framework for managing multi-language pre-commit hooks
+brew "pre-commit"
 # Python version management
 brew "pyenv"
+# Pyenv plugin to manage virtualenv
+brew "pyenv-virtualenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Embeddable, persistent key-value store for fast storage
-brew "rocksdb"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
-# Easy and Repeatable Kubernetes Development
-brew "skaffold"
-# Tool to build, change, and version infrastructure
-brew "terraform"
-# Framework for scalable cross-language services development
-brew "thrift"
 # Terminal multiplexer
 brew "tmux"
 # Manage complex tmux sessions easily
@@ -68,9 +53,15 @@ brew "tmuxinator"
 brew "truncate"
 # JavaScript toolchain manager for reproducible environments
 brew "volta"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
 # Internet file retriever
 brew "wget"
+# General-purpose lossless data-compression library
+brew "zlib"
 # UNIX shell (command interpreter)
 brew "zsh"
-cask "adoptopenjdk12"
+# C parsing library and command line linter for the Cypher Query Language
+brew "cleishm/neo4j/libcypher-parser"
+# Open-source screen recorder built with web technology
 cask "kap"
