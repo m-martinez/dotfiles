@@ -49,8 +49,6 @@ brew "ruby"
 brew "tmux"
 # Manage complex tmux sessions easily
 brew "tmuxinator"
-# Truncates a file to a given size
-brew "truncate"
 # JavaScript toolchain manager for reproducible environments
 brew "volta"
 # Executes a program periodically, showing output fullscreen
