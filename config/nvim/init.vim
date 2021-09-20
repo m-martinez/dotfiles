@@ -29,8 +29,8 @@ set autoindent
 set expandtab
 set smarttab
 set smartindent
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 
 " Use system clipboard (on MacOS)
 set clipboard=unnamed
@@ -38,7 +38,7 @@ set clipboard=unnamed
 " this is more annoying than helpful
 set nosmartindent
 
-autocmd FileType python setlocal shiftwidth=4 tabstop=4
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 " Don't try to align with the open parenthesis
 let g:pyindent_open_paren = 4
 
@@ -96,8 +96,9 @@ call neomake#configure#automake('w')
 let g:neomake_html_enabled_makers = ['tidy']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
-let g:neomake_typescript_enabled_makers = ['eslint']
-let g:neomake_typescript_tslint_exe = $PWD .'/node_modules/.bin/eslint'
+let g:neomake_typescript_enabled_makers = ['tsc', 'eslint']
+let g:neomake_typescript_tsc_exe = $PWD .'/node_modules/.bin/tsc'
+let g:neomake_typescript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
 
 " Setup a virtual environment specifically for neovim
 " see: https://neovim.io/doc/user/provider.html
