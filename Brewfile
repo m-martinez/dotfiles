@@ -23,8 +23,6 @@ brew "dive"
 brew "dos2unix"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
-# Play, record, convert, and stream audio and video
-brew "ffmpeg"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
 # User-friendly cURL replacement (command-line HTTP client)
@@ -35,8 +33,6 @@ brew "jq"
 brew "neovim"
 # Utility for managing network connections
 brew "netcat"
-# Framework for managing multi-language pre-commit hooks
-brew "pre-commit"
 # Python version management
 brew "pyenv"
 # Pyenv plugin to manage virtualenv

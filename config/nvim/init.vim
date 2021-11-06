@@ -103,7 +103,7 @@ let g:neomake_typescript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
 " Setup a virtual environment specifically for neovim
 " see: https://neovim.io/doc/user/provider.html
 " see: https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim#using-virtual-environments
-let g:python3_host_prog = "~/.pyenv/versions/py3nvim/bin/python"
+let g:python3_host_prog = "~/.pyenv/versions/py39nvim/bin/python"
 
 " Activate virtual env for project to make this work
 let g:neomake_python_checkers=['flake8', 'mypy']
@@ -113,6 +113,7 @@ let g:neomake_python_checkers=['flake8', 'mypy']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:poetv_auto_activate = 1
+let g:poetv_executables = ["poetry"]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NERDTree - Directory listing
