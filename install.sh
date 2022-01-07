@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 #
 # Installs third-party shell/vim plugins and links common dotfiles
