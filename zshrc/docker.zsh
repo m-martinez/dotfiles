@@ -7,4 +7,3 @@ function docker-stats() {
 function docker-memory() {
   docker stats --no-stream --format 'table {{.MemUsage}}' | sed 's/[A-Za-z]*//g' | awk '{sum += $1} END {print sum "MB"}'
 }
-
