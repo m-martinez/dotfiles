@@ -52,8 +52,8 @@ autocmd BufNewFile,BufRead *.mjs set filetype=javascript
 " => Spell Checking & Gammar
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set spell spelllang=en_us
-set complete+=kspell
+" set spell spelllang=en_us
+" set complete+=kspell
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
