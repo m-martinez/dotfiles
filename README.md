@@ -30,7 +30,6 @@ chsh /usr/bin/zsh
 Homebrew requirements
 ```
 sudo yum groupinstall 'Development Tools'
-sudo yum install procps-ng curl file git
 ```
 
 Install homebrew linux
@@ -46,21 +45,12 @@ git clone https://github.com/m-martinez/dotfiles ~/.dotfiles
 ~/.dotfiles/install.sh
 ```
 
-Fix Pyenv Installation for Linux
-You'll have to re-install pyenv because it will be installed with an incorrect gcc dependency
-More info:  https://github.com/pyenv/pyenv/issues/2039#issuecomment-917477753)
-```
-brew install gcc@5
-brew reinstall pyenv pyenv-virtualenv
-env CFLAGS="-I$(brew --prefix)/include" CPPFLAGS="-I$(brew --prefix)/include" LDFLAGS="-L$(brew --prefix)/lib" PYTHON_CONFIGURE_OPTS="CC=gcc-5" pyenv install 3.9.11
-```
-
 ## Create a virtual environment for NVim
 
 Create a virtual environment for nvim
 ```
-pyenv virtualenv 3.9.11 py39nvim
+pyenv virtualenv 3.9.14 py39nvim
 pyenv activate py39nvim
-python3 -m pip install pynvim poetry
+python3 -m pip install pynvim
 pyenv which python
 ```
