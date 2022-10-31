@@ -57,5 +57,3 @@ brew "zlib"
 brew "zsh"
 # C parsing library and command line linter for the Cypher Query Language
 brew "cleishm/neo4j/libcypher-parser"
-# Open-source screen recorder built with web technology
-cask "kap"

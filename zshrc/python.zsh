@@ -9,3 +9,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
         alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'
     fi
 fi
+
+# Ensure poetry can be found in linux
+# https://python-poetry.org/docs/#installing-with-the-official-installer
+export PATH="$HOME/.local/bin:$PATH"
