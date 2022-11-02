@@ -30,13 +30,13 @@ chsh /usr/bin/zsh
 Homebrew requirements
 ```
 sudo yum groupinstall 'Development Tools'
+sudo yum install procps-ng curl file git
 ```
 
 Install homebrew linux
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-brew install gcc
 ```
 
 Install dotfiles
