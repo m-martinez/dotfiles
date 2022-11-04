@@ -30,10 +30,10 @@ Plugin 'tomasiser/vim-code-dark'
 Plugin 'nanotech/jellybeans.vim'
 
 " Editor-like functionality
-Plugin 'scrooloose/nerdtree'
+Plugin 'preservim/nerdtree'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
-Plugin 'scrooloose/nerdcommenter'
+Plugin 'preservim/nerdcommenter'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'jpalardy/vim-slime'
 Plugin 'godlygeek/tabular'
