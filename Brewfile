@@ -1,14 +1,12 @@
 tap "adoptopenjdk/openjdk"
 tap "cleishm/neo4j"
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-versions"
-tap "homebrew/core"
 tap "homebrew/services"
 # Search tool like grep, but optimized for programmers
 brew "ack"
-# Command-line interface for SQLite
-brew "sqlite"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.11"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Freely available high-quality data compressor
@@ -25,6 +23,10 @@ brew "dos2unix"
 brew "exiftool"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
+# Distributed revision control system
+brew "git"
+# Improved top (interactive process viewer)
+brew "htop"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Lightweight and flexible command-line JSON processor
@@ -33,6 +35,8 @@ brew "jq"
 brew "neovim"
 # Utility for managing network connections
 brew "netcat"
+# Framework for managing multi-language pre-commit hooks
+brew "pre-commit"
 # Python version management
 brew "pyenv"
 # Pyenv plugin to manage virtualenv
@@ -41,10 +45,16 @@ brew "pyenv-virtualenv"
 brew "ripgrep"
 # Powerful, clean, object-oriented scripting language
 brew "ruby"
+# Login and retrieve AWS temporary credentials using a SAML IDP
+brew "saml2aws"
 # Terminal multiplexer
 brew "tmux"
 # Manage complex tmux sessions easily
 brew "tmuxinator"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Secures, stores, and tightly controls access to secrets
+brew "vault"
 # JavaScript toolchain manager for reproducible environments
 brew "volta"
 # Executes a program periodically, showing output fullscreen
