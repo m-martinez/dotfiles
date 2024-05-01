@@ -101,7 +101,7 @@ export LC_CTYPE="en_US.UTF-8"
 # update the path before firing-up OMZ
 # add local bin to the path if not already there
 if [[ "$PATH" != *"$HOME/.bin"* ]]; then
-    export PATH=$PATH:$HOME/.bin
+    export PATH=$HOME/.bin:$PATH
 fi
 
 # turn off special handling of ._* files in tar, etc.
@@ -171,6 +171,21 @@ if command -v volta &> /dev/null; then
 fi
 
 ###############################################################################
+# MySql
+###############################################################################
+
+# Check if Mysql (key only) was installed so it can be added to the PATH
+if [ -x "$HOMEBREW_PREFIX/opt/mysql@5.7/bin/mysql" ]; then
+    export PATH="$HOMEBREW_PREFIX/opt/mysql@5.7/bin:$PATH"
+    export LDFLAGS="-L/$HOMEBREW_PREFIX/opt/mysql@5.7/lib"
+    export CPPFLAGS="-I/$HOMEBREW_PREFIX/opt/mysql@5.7/include"
+
+    if command -v pkg-config &> /dev/null; then
+        export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/mysql@5.7/lib/pkgconfig"
+    fi
+fi
+
+###############################################################################
 # PHP
 ###############################################################################
 
@@ -213,7 +228,7 @@ fi
 
 # Ruby
 if command -v ruby &> /dev/null && command -v gem &> /dev/null; then
-    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+    export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
 ###############################################################################
