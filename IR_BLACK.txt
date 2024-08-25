@@ -1,4 +1,4 @@
-black: #000000 (0, 0, 0)
+black: #000000 0, 0, 0
 light black: #7C7C7C 124, 124, 124 
 red: #FF6C60 255, 108, 96 
 light red: #FFB6B0 255, 182, 176 
@@ -17,6 +17,6 @@ light white: #FFFFFF 255, 255, 255
 
 text: #F2F2F2 242, 242, 242 
 bold text: #FFFFFF 255, 255, 255 
-selection: #12132B 18, 19, 43 
+selection: #7C7C7C 124, 124, 124 
 cursor: #FFA560 255, 165, 96 
 background: #000000 0, 0, 0
