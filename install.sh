@@ -62,6 +62,5 @@ for CONFIG in ~/.dotfiles/config/*; do
 done
 
 # VIM plugin manager
-mkdir -p ~/.local/share/nvim/bundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.local/share/nvim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 $EDITOR -u ~/.config/nvim/bundles.vim +PluginInstall +qall

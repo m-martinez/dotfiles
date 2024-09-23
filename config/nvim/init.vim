@@ -114,7 +114,7 @@ let g:neomake_typescript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
 let g:python3_host_prog = "~/.pyenv/versions/py311nvim/bin/python"
 
 " Activate virtual env for project to make this work
-let g:neomake_python_enabled_makers = ['flake8', 'mypy']
+let g:neomake_python_enabled_makers = ['ruff', 'mypy']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Poetv - Allows dynamic setting of Poetry virtualenv
