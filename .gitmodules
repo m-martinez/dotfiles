@@ -1,0 +1,21 @@
+[submodule "_vim/pack/themes/start/vim-code-dark"]
+	path = _vim/pack/themes/start/vim-code-dark
+	url = git@github.com:tomasiser/vim-code-dark.git
+[submodule "_vim/pack/editor/start/nerdcommenter"]
+	path = _vim/pack/editor/start/nerdcommenter
+	url = git@github.com:preservim/nerdcommenter.git
+[submodule "_vim/pack/editor/start/nerdtree"]
+	path = _vim/pack/editor/start/nerdtree
+	url = git@github.com:preservim/nerdtree.git
+[submodule "_vim/pack/editor/start/tabular"]
+	path = _vim/pack/editor/start/tabular
+	url = git@github.com:godlygeek/tabular.git
+[submodule "_vim/pack/editor/start/vim-abolish"]
+	path = _vim/pack/editor/start/vim-abolish
+	url = git@github.com:tpope/vim-abolish.git
+[submodule "_vim/pack/editor/start/vim-slime"]
+	path = _vim/pack/editor/start/vim-slime
+	url = git@github.com:jpalardy/vim-slime.git
+[submodule "_vim/pack/editor/start/vim-surround"]
+	path = _vim/pack/editor/start/vim-surround
+	url = git@github.com:tpope/vim-surround.git
