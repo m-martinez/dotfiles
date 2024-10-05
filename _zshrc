@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -17,11 +17,11 @@ ZSH_THEME="robbyrussell"
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
-CASE_SENSITIVE="true"
+# CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
-HYPHEN_INSENSITIVE="true"
+# HYPHEN_INSENSITIVE="true"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
@@ -29,7 +29,7 @@ HYPHEN_INSENSITIVE="true"
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # # Uncomment the following line to change how often to auto-update (in days).
-zstyle ':omz:update' frequency 180
+zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -38,10 +38,10 @@ zstyle ':omz:update' frequency 180
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
+# DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -78,16 +78,11 @@ source $ZSH/oh-my-zsh.sh
 # Docker
 ###############################################################################
 
-
 # Preffered docker stats output
-function docker-stats() {
-  docker stats --format "table {{.Name}}\t{{.ID}}\t{{.CPUPerc}}\t{{.MemUsage}}"
-}
+alias docker-stats="docker stats --format \"table {{.Name}}\t{{.ID}}\t{{.CPUPerc}}\t{{.MemUsage}}\""
 
 # Print total memory currently used by docker
-function docker-memory() {
-  docker stats --no-stream --format 'table {{.MemUsage}}' | sed 's/[A-Za-z]*//g' | awk '{sum += $1} END {print sum "MB"}'
-}
+alias docker-memory="docker stats --no-stream --format 'table {{.MemUsage}}\' | sed \'s/[A-Za-z]*//g\' | awk \'{sum += \$1} END {print sum \"MB\"}'"
 
 ###############################################################################
 # Env
@@ -98,20 +93,14 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_CTYPE="en_US.UTF-8"
 
-# update the path before firing-up OMZ
-# add local bin to the path if not already there
-if [[ "$PATH" != *"$HOME/.bin"* ]]; then
-    export PATH=$HOME/.bin:$PATH
-fi
-
-# turn off special handling of ._* files in tar, etc.
+# Turn off special handling of ._* files in tar, etc.
 export COPYFILE_DISABLE=1
 
-#allow tab completion in the middle of a word
+# Allow tab completion in the middle of a word
 setopt COMPLETE_IN_WORD
 setopt CORRECT
 
-# for sharing history between zsh processes
+# For sharing history between zsh processes
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 HISTFILE=~/.histfile
@@ -120,20 +109,21 @@ SAVEHIST=10000
 alias history='history 1'
 WORDCHARS="${WORDCHARS:s#/#}"
 WORDCHARS="${WORDCHARS:s#.#}"
-# completion in the middle of a line
+
+# Completion in the middle of a line
 bindkey '^i' expand-or-complete-prefix
 bindkey '^R' history-incremental-search-backward
 
-# turn off annoying history verification, just run the damn command
+# Turn off annoying history verification, just run the damn command
 setopt NO_HIST_VERIFY
 
-# never ever beep ever. EVER
+# Never ever beep ever. EVER
 setopt NO_BEEP
 
-# do not print error on non matched patterns
+# Do not print error on non matched patterns
 setopt NO_NO_MATCH
 
-# use theme colors
+# Use theme colors
 export LS_COLORS=''
 
 # Switch the terminal to 256 colors, but only if it's not in a tumux session
@@ -146,19 +136,6 @@ fi
 # from interrupting PDB or some other process.
 # Symptoms include: new line not working; backspace stops working; etc
 alias fix-terminal="stty sane"
-
-###############################################################################
-# Git
-###############################################################################
-
-# Show a pretty graph of commit history
-alias git-graph="git log --pretty=oneline --abbrev-commit --graph --decorate --all"
-
-###############################################################################
-# Go
-###############################################################################
-
-#export GOPATH=$HOME/go
 
 ###############################################################################
 # JavaScript
@@ -177,30 +154,6 @@ if command -v volta &> /dev/null; then
 fi
 
 ###############################################################################
-# MySql
-###############################################################################
-
-# Check if Mysql (key only) was installed so it can be added to the PATH
-if [ -x "$HOMEBREW_PREFIX/opt/mysql@5.7/bin/mysql" ]; then
-    export PATH="$HOMEBREW_PREFIX/opt/mysql@5.7/bin:$PATH"
-    export LDFLAGS="-L/$HOMEBREW_PREFIX/opt/mysql@5.7/lib"
-    export CPPFLAGS="-I/$HOMEBREW_PREFIX/opt/mysql@5.7/include"
-
-    if command -v pkg-config &> /dev/null; then
-        export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/mysql@5.7/lib/pkgconfig"
-    fi
-fi
-
-###############################################################################
-# PHP
-###############################################################################
-
-if command -v composer &> /dev/null; then
-    # include php composer binaries
-    export PATH="$HOME/.composer/vendor/bin:$PATH"
-fi
-
-###############################################################################
 # Python
 ###############################################################################
 
@@ -216,52 +169,8 @@ if command -v pyenv 1>/dev/null 2>&1; then
     fi
 fi
 
-# Ensure poetry can be found in linux
-# https://python-poetry.org/docs/#installing-with-the-official-installer
-export PATH="$HOME/.local/bin:$PATH"
-
-###############################################################################
-# RipGrep
-###############################################################################
-
-if command -v rg &> /dev/null; then
-    export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
-fi
-
-###############################################################################
-# Ruby
-###############################################################################
-
-# Ruby
-if command -v ruby &> /dev/null && command -v gem &> /dev/null; then
-    export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
-
-###############################################################################
-# Tmux
-###############################################################################
-
-# Update SSH environment variables
-#
-# Tmux inherits environment settings when reattaching, but doesn't update
-# existing panel's environments. So we must do this ourselves with this function
-#
-# See: https://stackoverflow.com/a/34683596
-
-function fixssh() {
-    eval $(tmux show-env -s |grep '^SSH_')
-}
-
 ###############################################################################
 # VIM
 ###############################################################################
 
-# Neovim
-if command -v nvim &> /dev/null; then
-    alias vim="nvim"
-    alias vi="nvim"
-
-    # Ensure vim is the default editor
-    export EDITOR=nvim
-    export VISUAL=nvim
-fi
+export EDITOR=vim
