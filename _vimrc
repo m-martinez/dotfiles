@@ -70,8 +70,8 @@ set complete+=kspell
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Show json quoting
-"set conceallevel=0
-"let g:vim_json_syntax_conceal=0
+set conceallevel=0
+let g:vim_json_syntax_conceal=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -109,7 +109,7 @@ set complete+=kspell
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin: NERDTree - Directory listing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let NERDTreeIgnore=['\.o$', '\~$', '\.egg-info$', '\.pyc$', 'develop-eggs$', 'parts$', '__pycache__$', '\.DS_Store$', '\.git$', '\.class$', 'node_modules$']
+let NERDTreeIgnore=['\.swp$', '\.o$', '\~$', '\.egg-info$', '\.pyc$', 'develop-eggs$', 'parts$', '__pycache__$', '\.DS_Store$', '\.git$', '\.class$', 'node_modules$']
 let NERDTreeShowHidden=1 " show hidden files by default
 
 " auto start NERDTree when vim is started with no command line arguments

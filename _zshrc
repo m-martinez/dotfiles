@@ -70,7 +70,7 @@ zstyle ':omz:update' frequency 13
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras vi-mode pip tmux virtualenv)
+plugins=(asdf git git-extras vi-mode pip tmux virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -78,7 +78,7 @@ source $ZSH/oh-my-zsh.sh
 # Docker
 ###############################################################################
 
-# Preffered docker stats output
+# Preferred docker stats output
 alias docker-stats="docker stats --format \"table {{.Name}}\t{{.ID}}\t{{.CPUPerc}}\t{{.MemUsage}}\""
 
 # Print total memory currently used by docker
@@ -132,7 +132,7 @@ if [[ -n "$DISPLAY" && "$TERM" == "xterm" ]]; then
   export TERM=xterm-256color
 fi
 
-# Occansionally the terminal will end up in a bad state as a result
+# Occasionally the terminal will end up in a bad state as a result
 # from interrupting PDB or some other process.
 # Symptoms include: new line not working; backspace stops working; etc
 alias fix-terminal="stty sane"
@@ -162,7 +162,8 @@ if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init --path)"
     eval "$(pyenv init -)"
 
-    # Alias Homebrew becuase pyenv create additinal *-config files that confuse brew
+    # Alias Homebrew because pyenv creates additional *-config files that confuse 
+    # brew 
     # https://github.com/pyenv/pyenv/issues/106
     if command -v brew &> /dev/null; then
         alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'

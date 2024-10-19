@@ -19,3 +19,6 @@
 [submodule "_vim/pack/editor/start/vim-surround"]
 	path = _vim/pack/editor/start/vim-surround
 	url = git@github.com:tpope/vim-surround.git
+[submodule "_vim/pack/syntax/vim-json"]
+	path = _vim/pack/syntax/vim-json
+	url = git@github.com:elzr/vim-json.git
