@@ -13,6 +13,7 @@ let mapleader = ","
 
 set cursorline      " Current cursor line
 set number
+set ruler
 
 set ignorecase      " Ignore case when searching
 set smartcase       " Smart case search if there is uppercase
