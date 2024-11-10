@@ -33,6 +33,7 @@ set clipboard=unnamed
 set nosmartindent
 
 " Enable bracketed mode so that paste is auto-toggled
+" https://vi.stackexchange.com/a/25315
 if &t_BE == ''
     let &t_BE = "\e[?2004h"
     let &t_BD = "\e[?2004l"
