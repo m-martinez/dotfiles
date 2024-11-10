@@ -32,6 +32,14 @@ set clipboard=unnamed
 " this is more annoying than helpful
 set nosmartindent
 
+" Enable bracketed mode so that paste is auto-toggled
+if &t_BE == ''
+    let &t_BE = "\e[?2004h"
+    let &t_BD = "\e[?2004l"
+    let &t_PS = "\e[200~"
+    let &t_PE = "\e[201~"
+endif
+
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 
 
