@@ -75,35 +75,16 @@ let g:vim_json_syntax_conceal=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin: NeoMake - Used for asyncronously running linters
+" => ALE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Full config: when writing or reading a buffer, and on changes in insert and
-" normal mode (after 1s; no delay when writing).
-"call neomake#configure#automake('w')
+let g:ale_python_auto_uv = 1
 
-"let g:neomake_html_enabled_makers = ['tidy']
-"let g:neomake_javascript_enabled_makers = ['eslint']
-"let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
-"let g:neomake_typescript_enabled_makers = ['tsc', 'eslint']
-"let g:neomake_typescript_tsc_exe = $PWD .'/node_modules/.bin/tsc'
-"let g:neomake_typescript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
+let g:ale_linters = { 'python': ['mypy', 'pylint', 'ruff'], }
+let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['ruff_format'], }
 
-" Setup a virtual environment specifically for neovim
-" see: https://neovim.io/doc/user/provider.html
-" see: https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim#using-virtual-environments
-"let g:python3_host_prog = "~/.pyenv/versions/py311nvim/bin/python"
-
-" Activate virtual env for project to make this work
-"let g:neomake_python_enabled_makers = ['ruff', 'mypy']
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugin: Poetv - Allows dynamic setting of Poetry virtualenv
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"let g:poetv_auto_activate = 1
-"let g:poetv_executables = ["poetry"]
+autocmd ColorScheme * highlight ALEVirtualTextError Error
+autocmd ColorScheme * highlight ALEVirtualTextWarning Warning
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

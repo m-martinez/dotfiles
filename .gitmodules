@@ -25,3 +25,6 @@
 [submodule "_vim/pack/syntax/start/vim-go"]
 	path = _vim/pack/syntax/start/vim-go
 	url = git@github.com:fatih/vim-go.git
+[submodule "_vim/pack/syntax/start/ale"]
+	path = _vim/pack/syntax/start/ale
+	url = git@github.com:dense-analysis/ale.git
