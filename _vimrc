@@ -74,6 +74,11 @@ set ffs=unix,dos,mac "Default file types
 set spell spelllang=en_us
 set complete+=kspell
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin: editorconfig-vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+packadd! editorconfig
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin: vim-json
