@@ -28,3 +28,6 @@
 [submodule "_vim/pack/syntax/start/ale"]
 	path = _vim/pack/syntax/start/ale
 	url = git@github.com:dense-analysis/ale.git
+[submodule "_vim/pack/editor/start/editorconfig-vim"]
+	path = _vim/pack/editor/start/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim.git

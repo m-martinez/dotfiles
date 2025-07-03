@@ -96,7 +96,7 @@ let g:vim_json_syntax_conceal=0
 let g:ale_python_auto_uv = 1
 
 let g:ale_linters = { 'python': ['mypy', 'pylint', 'ruff'], }
-let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['ruff_format'], }
+let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['isort', 'ruff_format'], }
 
 autocmd ColorScheme * highlight ALEVirtualTextError Error
 autocmd ColorScheme * highlight ALEVirtualTextWarning Warning
