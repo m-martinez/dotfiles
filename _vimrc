@@ -89,6 +89,13 @@ set conceallevel=0
 let g:vim_json_syntax_conceal=0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin: go-vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Let ALE take care of the auto-formatting
+let g:go_fmt_autosave = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin: editorconfig-vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -100,10 +107,12 @@ packadd! editorconfig
 " => ALE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+let g:ale_fix_on_save = 1
+
 let g:ale_python_auto_uv = 1
 
 let g:ale_linters = { 'python': ['mypy', 'pylint', 'ruff'], }
-let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'python': ['isort', 'ruff_format'], }
+let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'go': ['gofmt'], 'python': ['isort', 'ruff_format'] }
 
 autocmd ColorScheme * highlight ALEVirtualTextError Error
 autocmd ColorScheme * highlight ALEVirtualTextWarning Warning
