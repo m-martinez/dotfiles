@@ -1,0 +1,3 @@
+# Keep directory in git history, but ignore all files
+*
+!.gitignore
