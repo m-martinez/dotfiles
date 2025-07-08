@@ -22,7 +22,9 @@ echo "${BGREEN}==> Configuring git${NOCOLOR}"
 
 git config --global color.ui auto
 git config --global user.name "Marco Martinez"
-git config --global user.email "m-martinez@users.noreply.github.com"
+if [[ $(git config --global user.email) = "" ]]; then
+    git config --global user.email "m-martinez@users.noreply.github.com"
+fi
 git config --global push.default simple
 git.config --global push.followTags true
 git config --global alias.glog "log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(bold blue)<%an>%C(reset)'"
