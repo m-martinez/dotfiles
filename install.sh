@@ -54,16 +54,6 @@ for DOTFILE in ~/.dotfiles/_*; do
   ln -sfn $DOTFILE $DEST
 done
 
-
-echo "${BGREEN}==> Installing asdv-vm ${NOCOLOR}"
-
-if [ -d "$HOME/.asdf" ]; then
-  echo "${YELLOW} asdf is already setup${NOCOLOR}"
-else
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1
-fi
-
-
 echo "${BGREEN}==> Reloading zshell configuration file${NOCOLOR}"
 
 source ~/.zshrc
