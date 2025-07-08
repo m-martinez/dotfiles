@@ -27,6 +27,8 @@ if [[ $(git config --global user.email) = "" ]]; then
 fi
 git config --global push.default simple
 git.config --global push.followTags true
+git config --global pull.rebase true
+git config --global fetch.prune true
 git config --global alias.glog "log --graph --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(bold blue)<%an>%C(reset)'"
 git config --global alias.graph="log --pretty=oneline --abbrev-commit --graph --decorate --all"
 git config --global alias.prune "fetch --prune"
