@@ -181,7 +181,8 @@ export EDITOR=vim
 ###############################################################################
 
 # Load extra configuration that might be system dependent
-for file in ~/.zsh/*; do
+# In my testing only files and linked files worked. Not linked directories.
+for file in $HOME/.zshuntracked/*.zshrc; do
     if [ -f "$file" ]; then
         source "$file"
     fi
